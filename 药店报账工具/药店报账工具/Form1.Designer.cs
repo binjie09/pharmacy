@@ -31,16 +31,27 @@
             this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.添加医生信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.添加医生信息ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(750, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(750, 25);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // 添加医生信息ToolStripMenuItem
+            // 
+            this.添加医生信息ToolStripMenuItem.Name = "添加医生信息ToolStripMenuItem";
+            this.添加医生信息ToolStripMenuItem.Size = new System.Drawing.Size(92, 21);
+            this.添加医生信息ToolStripMenuItem.Text = "添加医生信息";
+            this.添加医生信息ToolStripMenuItem.Click += new System.EventHandler(this.添加医生信息ToolStripMenuItem_Click);
             // 
             // form1
             // 
@@ -51,6 +62,9 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "form1";
             this.Text = "药店信息管理v0.0.1";
+            this.Load += new System.EventHandler(this.form1_Load);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -61,6 +75,7 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.ToolStripMenuItem 添加医生信息ToolStripMenuItem;
     }
 }
 

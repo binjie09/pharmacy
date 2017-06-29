@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace 药店报账工具
 {
-    public partial class form1 : Form
+    public partial class FormCreateDoctor : Form
     {
-        public form1()
+        public FormCreateDoctor()
         {
             InitializeComponent();
-        }
-
-        private void form1_Load(object sender, EventArgs e)
-        {
-            MyData md = new MyData();
-        }
-
-        private void 添加医生信息ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
