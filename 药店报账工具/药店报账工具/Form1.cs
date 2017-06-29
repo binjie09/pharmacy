@@ -26,5 +26,10 @@ namespace 药店报账工具
         {
 
         }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
