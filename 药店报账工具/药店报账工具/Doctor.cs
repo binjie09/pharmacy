@@ -10,7 +10,7 @@ namespace 药店报账工具
     {
        
         int fees = 0;//医生的诊费
-        string remarks = ""//备注
+        string remarks = "";//备注
         public Doctor() 
         {
 

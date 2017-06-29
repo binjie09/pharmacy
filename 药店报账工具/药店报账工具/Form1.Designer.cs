@@ -156,7 +156,7 @@
             this.label6.Size = new System.Drawing.Size(41, 12);
             this.label6.TabIndex = 10;
             this.label6.Text = "诊费：";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
+            this.label6.Click += new System.EventHandler(this.Label6_Click);
             // 
             // label7
             // 
@@ -226,7 +226,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(107, 57);
             this.button1.TabIndex = 18;
-            this.button1.Text = "打印票据";
+            this.button1.Text = "收款";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // form1
@@ -256,7 +256,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "form1";
             this.Text = "药店信息管理v0.0.1";
-            this.Load += new System.EventHandler(this.form1_Load);
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();

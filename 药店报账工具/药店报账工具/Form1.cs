@@ -17,17 +17,18 @@ namespace 药店报账工具
             InitializeComponent();
         }
 
-        private void form1_Load(object sender, EventArgs e)
+        private void Form1_Load(object sender, EventArgs e)
         {
             MyData md = new MyData();
         }
 
         private void 添加医生信息ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            FormCreateDoctor f = new FormCreateDoctor();
+            f.Show();
         }
 
-        private void label6_Click(object sender, EventArgs e)
+        private void Label6_Click(object sender, EventArgs e)
         {
 
         }
