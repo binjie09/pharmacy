@@ -39,17 +39,19 @@
             this.fees = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.yaojia = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.total = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.textRemark = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
@@ -90,10 +92,14 @@
             // comboBoxDoctor
             // 
             this.comboBoxDoctor.FormattingEnabled = true;
+            this.comboBoxDoctor.Items.AddRange(new object[] {
+            "王医生",
+            "赵医生"});
             this.comboBoxDoctor.Location = new System.Drawing.Point(116, 86);
             this.comboBoxDoctor.Name = "comboBoxDoctor";
             this.comboBoxDoctor.Size = new System.Drawing.Size(121, 20);
             this.comboBoxDoctor.TabIndex = 3;
+            this.comboBoxDoctor.SelectedIndexChanged += new System.EventHandler(this.选择医生);
             // 
             // label2
             // 
@@ -131,13 +137,14 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "总药价：";
             // 
-            // textBox1
+            // yaojia
             // 
-            this.textBox1.Location = new System.Drawing.Point(116, 143);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(121, 21);
-            this.textBox1.TabIndex = 8;
-            this.textBox1.Text = "1.0";
+            this.yaojia.Location = new System.Drawing.Point(116, 143);
+            this.yaojia.Name = "yaojia";
+            this.yaojia.Size = new System.Drawing.Size(121, 21);
+            this.yaojia.TabIndex = 8;
+            this.yaojia.Text = "1.0";
+            this.yaojia.TextChanged += new System.EventHandler(this.输入总药价时);
             // 
             // label5
             // 
@@ -167,14 +174,14 @@
             this.label7.TabIndex = 11;
             this.label7.Text = "应收金额：";
             // 
-            // textBox2
+            // total
             // 
-            this.textBox2.Location = new System.Drawing.Point(116, 201);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(121, 21);
-            this.textBox2.TabIndex = 12;
-            this.textBox2.Text = "1.0";
+            this.total.Location = new System.Drawing.Point(116, 201);
+            this.total.Name = "total";
+            this.total.ReadOnly = true;
+            this.total.Size = new System.Drawing.Size(121, 21);
+            this.total.TabIndex = 12;
+            this.total.Text = "1.0";
             // 
             // label8
             // 
@@ -192,6 +199,7 @@
             this.textBox3.Size = new System.Drawing.Size(121, 21);
             this.textBox3.TabIndex = 14;
             this.textBox3.Text = "1.0";
+            this.textBox3.TextChanged += new System.EventHandler(this.输入实收金额时);
             // 
             // label9
             // 
@@ -228,23 +236,43 @@
             this.button1.TabIndex = 18;
             this.button1.Text = "收款";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // textRemark
+            // 
+            this.textRemark.Location = new System.Drawing.Point(116, 320);
+            this.textRemark.Name = "textRemark";
+            this.textRemark.Size = new System.Drawing.Size(121, 21);
+            this.textRemark.TabIndex = 19;
+            this.textRemark.Text = "无";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(48, 325);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(41, 12);
+            this.label11.TabIndex = 20;
+            this.label11.Text = "备注：";
             // 
             // form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(780, 557);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.textRemark);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.total);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.yaojia);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.fees);
@@ -277,17 +305,19 @@
         private System.Windows.Forms.TextBox fees;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox yaojia;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox total;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textRemark;
+        private System.Windows.Forms.Label label11;
     }
 }
 

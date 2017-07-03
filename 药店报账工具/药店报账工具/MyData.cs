@@ -32,8 +32,8 @@ namespace 药店报账工具
 
             
             // 中成药表的建立
-            DataColumn patentMedicineAmountColumn = new DataColumn("Amount", typeof(int));
-            DataColumn patnetMedicineTotalPriceColumn = new DataColumn("totalPrice", typeof(double));
+            DataColumn patentMedicineAmountColumn = new DataColumn("AmountMedicine", typeof(int));
+            DataColumn patnetMedicineTotalPriceColumn = new DataColumn("totalPriceMedicine", typeof(double));
             patnetMedicineTotalPriceColumn.Caption = "Total Price";
 
             DataTable patentMedicineTable = new DataTable("ChinesePatentMedicine");
@@ -41,12 +41,12 @@ namespace 药店报账工具
 
 
             // 茶方表的建立
-            DataColumn teaPartyAmountColumn = new DataColumn("Amount", typeof(int));
-            DataColumn teaPartyTotalPriceColumn = new DataColumn("totalPrice", typeof(double));
+            DataColumn teaPartyAmountColumn = new DataColumn("AmountTea", typeof(int));
+            DataColumn teaPartyTotalPriceColumn = new DataColumn("totalPriceTea", typeof(double));
             patnetMedicineTotalPriceColumn.Caption = "Total Price";
 
             DataTable teaPartyTable = new DataTable("teaParty");
-            patentMedicineTable.Columns.AddRange(new DataColumn[] { patentMedicineAmountColumn, patnetMedicineTotalPriceColumn });
+            patentMedicineTable.Columns.AddRange(new DataColumn[] { teaPartyAmountColumn, teaPartyTotalPriceColumn });//都不检查下能不能运行的吗 。。。。
 
             pharmacyDS.Tables.Add(doctorTable);
             pharmacyDS.Tables.Add(patentMedicineTable);
@@ -55,11 +55,11 @@ namespace 药店报账工具
             
         }
         // 将信息插入到 doctor 这张表中
-        public static void insertToDoctor(string name, double free, string remark)
+        public static void insertToDoctor(string name, double fee, string remark) 
         {
             DataRow doctorRow = pharmacyDS.Tables["Doctor"].NewRow();
             doctorRow["Name"] = name;
-            doctorRow["Free"] = free;
+            doctorRow["Free"] = fee;
             doctorRow["remark"] = remark;
 
             pharmacyDS.Tables["Doctor"].Rows.Add(doctorRow);
@@ -80,9 +80,14 @@ namespace 药店报账工具
             teaPartyRow["totalPrice"] = price;
             pharmacyDS.Tables["teaParty"].Rows.Add(teaPartyRow);
         }
-
+        public int getDoctorFeesByName(string name)//通过医生的名字获取诊费
+        {
+            //pharmacyDS.Tables["Doctor"]
+            return 0;
+        }
        int Save(string type)//根据数据类型保存数据,type可以是医生，病人，打印的票据 等 有几种type就应该有几种保存的文件  成功保存返回0 否则返回-1
         {
+            MyUtil.DSToExcel("c:/pharmacy/", pharmacyDS);
             return 0;
         }
         int Load(string type ) //情况同save  
