@@ -10,22 +10,28 @@ namespace 药店报账工具
 {
     class MyData//数据直接使用excel 存储，读入和导出都用excel
     {
-        static DataSet pharmacyDS = new DataSet("pharmacy"); //存储
+        public static DataSet pharmacyDS = new DataSet("pharmacy"); //存储
         String path = null; //存储路径
 
         public DataSet Ds { get => pharmacyDS; set => pharmacyDS = value; }
         public string Path { get => path; set => path = value; }
 
         public MyData(){ //构造函数
-                         // 药店的 DataSet 有几个不同的表：医生、中成药、茶方
+                         // 药店的 DataSet 有几个不同的表：医生、中成药、茶方  
 
             // 和医生表的建立
-            DataColumn doctorNameColumn = new DataColumn("Name", typeof(string));
-            doctorNameColumn.Caption = "Doctor Name";
-            DataColumn doctorFreeColumn = new DataColumn("Free", typeof(double));
-            doctorFreeColumn.Caption = "Doctor's free";
-            DataColumn doctorRemarkColumn = new DataColumn("Remark", typeof(string));
-
+            DataColumn doctorNameColumn = new DataColumn("Name", typeof(string))
+            {
+                Caption = "Doctor Name"
+            };
+            DataColumn doctorFreeColumn = new DataColumn("Free", typeof(double))
+            {
+                Caption = "Doctor's free"
+            };
+            DataColumn doctorRemarkColumn = new DataColumn("Remark", typeof(string))
+            {
+                Caption = "Doctor's remark"
+            };
 
             DataTable doctorTable = new DataTable("Doctor");
             doctorTable.Columns.AddRange(new DataColumn[] { doctorNameColumn, doctorFreeColumn, doctorRemarkColumn });
@@ -33,9 +39,10 @@ namespace 药店报账工具
             
             // 中成药表的建立
             DataColumn patentMedicineAmountColumn = new DataColumn("AmountMedicine", typeof(int));
-            DataColumn patnetMedicineTotalPriceColumn = new DataColumn("totalPriceMedicine", typeof(double));
-            patnetMedicineTotalPriceColumn.Caption = "Total Price";
-
+            DataColumn patnetMedicineTotalPriceColumn = new DataColumn("totalPriceMedicine", typeof(double))
+            {
+                Caption = "Total Price"
+            };
             DataTable patentMedicineTable = new DataTable("ChinesePatentMedicine");
             patentMedicineTable.Columns.AddRange(new DataColumn[] { patentMedicineAmountColumn, patnetMedicineTotalPriceColumn });
 
@@ -54,8 +61,8 @@ namespace 药店报账工具
 
             
         }
-        // 将信息插入到 doctor 这张表中
-        public static void insertToDoctor(string name, double fee, string remark) 
+        // 将信息插入到 doctor 这张表中   （注意方法命名规范，这是java 方法首字母大写！）
+        public static void InsertToDoctor(string name, double fee, string remark) 
         {
             DataRow doctorRow = pharmacyDS.Tables["Doctor"].NewRow();
             doctorRow["Name"] = name;
@@ -65,7 +72,7 @@ namespace 药店报账工具
             pharmacyDS.Tables["Doctor"].Rows.Add(doctorRow);
         }
         // 插入到 patentMedicine 中
-        public static void insertToPatentMedicine(int amount, double price)
+        public static void InsertToPatentMedicine(int amount, double price)
         {
             DataRow patentMedicineRow = pharmacyDS.Tables["ChinesePatentMedicine"].NewRow();
             patentMedicineRow["Amount"] = amount;
@@ -73,14 +80,14 @@ namespace 药店报账工具
             pharmacyDS.Tables["ChinesePatentMedicine"].Rows.Add(patentMedicineRow);
         }
         // 插入到 teaParty 中
-        public static void insertToTeaParty(int amount, double price)
+        public static void InsertToTeaParty(int amount, double price)
         {
             DataRow teaPartyRow = pharmacyDS.Tables["teaParty"].NewRow();
             teaPartyRow["Amount"] = amount;
             teaPartyRow["totalPrice"] = price;
             pharmacyDS.Tables["teaParty"].Rows.Add(teaPartyRow);
         }
-        public int getDoctorFeesByName(string name)//通过医生的名字获取诊费
+        public int GetDoctorFeesByName(string name)//通过医生的名字获取诊费
         {
             //pharmacyDS.Tables["Doctor"]
             return 0;
@@ -92,6 +99,7 @@ namespace 药店报账工具
         }
         int Load(string type ) //情况同save  
         {
+            pharmacyDS = MyUtil.ExcelToDS("c:/pharmacy/");
             return 0;
         }
 

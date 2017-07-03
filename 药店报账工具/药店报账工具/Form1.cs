@@ -37,31 +37,36 @@ namespace 药店报账工具
         private void 选择医生(object sender, EventArgs e)
         {
 
-            freshPrise();
+            FreshPrise();
         }
 
-        private void freshPrise()//更新所有价格
+        private void FreshPrise()//更新所有价格
         {
-            double _fees = md.getDoctorFeesByName(comboBoxDoctor.Text);
+            double _fees = md.GetDoctorFeesByName(comboBoxDoctor.Text);
             fees.Text = _fees.ToString();
             double _total = (Convert.ToDouble(yaojia.Text) + _fees);
-
+            zhaoling.Text = (_total - Convert.ToDouble(shishoujine.Text)).ToString();
             total.Text = _total.ToString();
         }
 
         private void 输入总药价时(object sender, EventArgs e)
         {
-            freshPrise();
+            FreshPrise();
         }
 
         private void 输入实收金额时(object sender, EventArgs e)
         {
-            freshPrise();
+            FreshPrise();
         }
 
-        private void button1_Click(object sender, EventArgs e) // 收款按钮按下
+        private void Button1_Click(object sender, EventArgs e) // 收款按钮按下
         {
-            MyData.insertToDoctor(comboBoxDoctor.Text,Convert.ToDouble(total.Text), textRemark.Text);
+            System.DateTime currentTime = new System.DateTime(); //当前时间
+            currentTime = System.DateTime.Now;//时间
+            string _name = comboBoxDoctor.Text; //医生姓名
+            double _total = Convert.ToDouble(total.Text);//总价格 包括医生的诊费等
+            string _remark = textRemark.Text;//备注
+            //MyData.insertTo(,, ); 发现不知道忘哪个表里插， 表还没写好
         }
     }
 }

@@ -19,7 +19,7 @@ namespace 药店报账工具
             this.remarks = Remarks;
 
         }
-        public void update(int Fees, string name, string remarks)
+        public void Update(int Fees, string name, string remarks)
         {
             this.fees = Fees;
             this.name = Name;

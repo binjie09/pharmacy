@@ -32,10 +32,12 @@ namespace 药店报账工具
             string strCom = "select * from [Sheet1$]";
             myConn.Open();
             OleDbDataAdapter myCommand = new OleDbDataAdapter(strCom, myConn);
-            System.Data.OleDb.OleDbCommandBuilder builder = new OleDbCommandBuilder(myCommand);
-            //QuotePrefix和QuoteSuffix主要是对builder生成InsertComment命令时使用。 
-            builder.QuotePrefix = "[";     //获取insert语句中保留字符（起始位置） 
-            builder.QuoteSuffix = "]"; //获取insert语句中保留字符（结束位置） 
+            System.Data.OleDb.OleDbCommandBuilder builder = new OleDbCommandBuilder(myCommand)
+            {
+                //QuotePrefix和QuoteSuffix主要是对builder生成InsertComment命令时使用。 
+                QuotePrefix = "[",     //获取insert语句中保留字符（起始位置） 
+                QuoteSuffix = "]" //获取insert语句中保留字符（结束位置） 
+            };
             DataSet newds = new DataSet();
             myCommand.Fill(newds, "Table1");
             for (int i = 0; i < oldds.Tables[0].Rows.Count; i++)

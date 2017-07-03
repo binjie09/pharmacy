@@ -33,15 +33,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textName = new System.Windows.Forms.TextBox();
+            this.textFee = new System.Windows.Forms.TextBox();
+            this.textRemark = new System.Windows.Forms.TextBox();
             this.buttonAdd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(28, 294);
             this.dataGridView1.Name = "dataGridView1";
@@ -85,26 +86,26 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "备注：";
             // 
-            // textBox1
+            // textName
             // 
-            this.textBox1.Location = new System.Drawing.Point(85, 28);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 21);
-            this.textBox1.TabIndex = 5;
+            this.textName.Location = new System.Drawing.Point(85, 28);
+            this.textName.Name = "textName";
+            this.textName.Size = new System.Drawing.Size(100, 21);
+            this.textName.TabIndex = 5;
             // 
-            // textBox2
+            // textFee
             // 
-            this.textBox2.Location = new System.Drawing.Point(85, 85);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 21);
-            this.textBox2.TabIndex = 6;
+            this.textFee.Location = new System.Drawing.Point(85, 85);
+            this.textFee.Name = "textFee";
+            this.textFee.Size = new System.Drawing.Size(100, 21);
+            this.textFee.TabIndex = 6;
             // 
-            // textBox3
+            // textRemark
             // 
-            this.textBox3.Location = new System.Drawing.Point(85, 142);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 21);
-            this.textBox3.TabIndex = 7;
+            this.textRemark.Location = new System.Drawing.Point(85, 142);
+            this.textRemark.Name = "textRemark";
+            this.textRemark.Size = new System.Drawing.Size(100, 21);
+            this.textRemark.TabIndex = 7;
             // 
             // buttonAdd
             // 
@@ -114,6 +115,7 @@
             this.buttonAdd.TabIndex = 8;
             this.buttonAdd.Text = "添加";
             this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.ButtonAdd_Click);
             // 
             // FormCreateDoctor
             // 
@@ -121,9 +123,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(821, 660);
             this.Controls.Add(this.buttonAdd);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textRemark);
+            this.Controls.Add(this.textFee);
+            this.Controls.Add(this.textName);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -144,9 +146,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textName;
+        private System.Windows.Forms.TextBox textFee;
+        private System.Windows.Forms.TextBox textRemark;
         private System.Windows.Forms.Button buttonAdd;
     }
 }
