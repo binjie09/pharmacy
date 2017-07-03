@@ -41,6 +41,7 @@ namespace 药店报账工具
             }
 
             MyData.InsertToDoctor(_name, _fee, _remark);//都写了Doctor类了结果没用上，不插入doctor？ 那就把doctor类删了吧
+            MyData.Save("all");
         }
         
     }

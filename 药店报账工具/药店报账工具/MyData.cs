@@ -92,14 +92,14 @@ namespace 药店报账工具
             //pharmacyDS.Tables["Doctor"]
             return 0;
         }
-       int Save(string type)//根据数据类型保存数据,type可以是医生，病人，打印的票据 等 有几种type就应该有几种保存的文件  成功保存返回0 否则返回-1
+        public static int Save(string type)//根据数据类型保存数据,type可以是医生，病人，打印的票据 等 有几种type就应该有几种保存的文件  成功保存返回0 否则返回-1
         {
-            MyUtil.DSToExcel("c:/pharmacy/", pharmacyDS);
+            MyUtil.DSToExcel("c:/pharmacy/sav.xls", pharmacyDS);
             return 0;
         }
-        int Load(string type ) //情况同save  
+        public static int Load(string type ) //情况同save  
         {
-            pharmacyDS = MyUtil.ExcelToDS("c:/pharmacy/");
+            pharmacyDS = MyUtil.ExcelToDS("c:/pharmacy/sav.xls");
             return 0;
         }
 

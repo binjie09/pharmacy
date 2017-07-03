@@ -39,19 +39,23 @@ namespace 药店报账工具
                 QuoteSuffix = "]" //获取insert语句中保留字符（结束位置） 
             };
             DataSet newds = new DataSet();
-            myCommand.Fill(newds, "Table1");
+            myCommand.Fill(newds, "Doctor");
             for (int i = 0; i < oldds.Tables[0].Rows.Count; i++)
             {
                 //在这里不能使用ImportRow方法将一行导入到news中，因为ImportRow将保留原来DataRow的所有设置(DataRowState状态不变)。
                // 在使用ImportRow后newds内有值，但不能更新到Excel中因为所有导入行的DataRowState != Added
-            DataRow nrow = oldds.Tables["Table1"].NewRow();
+            DataRow nrow = oldds.Tables["Doctor"].NewRow();
+                
                 for (int j = 0; j < newds.Tables[0].Columns.Count; j++)
                 {
                     nrow[j] = oldds.Tables[0].Rows[i][j];
+                    newds.Tables["Doctor"].Rows.Add(nrow[j]);
+
                 }
-                newds.Tables["Table1"].Rows.Add(nrow);
+               
             }
-            myCommand.Update(newds, "Table1");
+           
+            myCommand.Update(newds, "Doctor");
             myConn.Close();
         }
 
