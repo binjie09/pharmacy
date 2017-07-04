@@ -20,7 +20,6 @@ namespace 药店报账工具
 
         private void Form1_Load(object sender, EventArgs e)
         {
-             md = new MyData();
         }
 
         private void 添加医生信息ToolStripMenuItem_Click(object sender, EventArgs e)
