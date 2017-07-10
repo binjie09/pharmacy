@@ -16,6 +16,7 @@ namespace 药店报账工具
         public form1()
         {
             InitializeComponent();
+            md = new MyData();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -25,7 +26,7 @@ namespace 药店报账工具
         private void 添加医生信息ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormCreateDoctor f = new FormCreateDoctor();
-            f.Show();
+            f.ShowDialog();
         }
 
         private void Label6_Click(object sender, EventArgs e)
@@ -35,7 +36,6 @@ namespace 药店报账工具
 
         private void 选择医生(object sender, EventArgs e)
         {
-
             FreshPrise();
         }
 

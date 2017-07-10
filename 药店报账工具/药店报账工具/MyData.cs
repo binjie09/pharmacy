@@ -69,7 +69,7 @@ namespace 药店报账工具
             teaPartyTable.Columns.AddRange(new DataColumn[] { teaPartyAmountColumn, teaPartyTotalPriceColumn, teaPartyRemarkColumn });
 
 
-            // 交易记录表的建立：交易的对象、药价、管理费、包装费、代煎费、实收金额、时间、支付方式
+            // 交易记录表的建立：交易的所有者、药价、管理费、包装费、代煎费、实收金额、时间、支付方式
             DataColumn transactionRecordOwnerColumn = new DataColumn("Owner", typeof(string))
             {
                 Caption = "transaction's owner"
@@ -138,8 +138,9 @@ namespace 药店报账工具
         public static void InsertToTransactionRecord(string owner, double MedicinePrice, double ManagementFee, double PackingFee,
             double RepalcementFee, double Paid_inAmount, string payWay = "", string Remark = "")
         {
-           DataRow transactionRecordRow = null;
+            DataRow transactionRecordRow = null;
             transactionRecordRow = pharmacyDS.Tables["TransactionRecord"].NewRow();
+
             transactionRecordRow["Owner"] = owner;
             transactionRecordRow["Price"] = MedicinePrice;
             transactionRecordRow["ManagementFee"] = ManagementFee;
@@ -148,6 +149,7 @@ namespace 药店报账工具
             transactionRecordRow["Paid_inAmount"] = Paid_inAmount;
             transactionRecordRow["payWay"] = payWay;
             transactionRecordRow["Remark"] = Remark;
+
             transactionRecordRow["DateTime"] = DateTime.Now;
         }
 
