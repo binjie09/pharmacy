@@ -37,10 +37,6 @@ namespace 药店报账工具
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-<<<<<<< HEAD
-            BindCombobox();
-            FreshPrise();
-=======
             HSSFWorkbook workbook2003 = new HSSFWorkbook(); //新建xls工作簿
             workbook2003.CreateSheet("Sheet1");  //新建3个Sheet工作表
             workbook2003.CreateSheet("Sheet2");
@@ -58,7 +54,6 @@ namespace 药店报账工具
             workbook2007.Write(file2007);
             file2007.Close();
             workbook2007.Close();
->>>>>>> 543225bfc61f37e8e034a7e1de507eaebcf4dc20
         }
 
         private void 添加医生信息ToolStripMenuItem_Click(object sender, EventArgs e)
