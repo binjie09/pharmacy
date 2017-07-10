@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace 药店报账工具
 {
+    /// <summary>
+    /// 主窗口
+    /// </summary>
     public partial class form1 : Form
     {
         MyData md;
@@ -19,6 +22,9 @@ namespace 药店报账工具
             md = new MyData();
             Init();
         }
+        /// <summary>
+        /// 绑定comboBox数据源
+        /// </summary>
         private void BindCombobox()
         {
             comboBoxDoctor.DataSource = md.Ds.Tables["Doctor"];
@@ -28,6 +34,7 @@ namespace 药店报账工具
         private void Form1_Load(object sender, EventArgs e)
         {
             BindCombobox();
+            FreshPrise();
         }
 
         private void 添加医生信息ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -46,8 +53,10 @@ namespace 药店报账工具
         {
             FreshPrise();
         }
-
-        private void FreshPrise()//更新所有价格
+        /// <summary>
+        /// 更新所有价格
+        /// </summary>
+        private void FreshPrise()
         {
             if (shishoujine.Text == "" || comboBoxDoctor.Text == "" || yaojia.Text == "")
             {
@@ -100,6 +109,9 @@ namespace 药店报账工具
             from2.ShowDialog();
             Init();
         }
+        /// <summary>
+        /// 初始化价格输入框
+        /// </summary>
         private void Init()
         {
             yaojia.Text = "";

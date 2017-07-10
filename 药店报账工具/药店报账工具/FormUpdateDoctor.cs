@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace 药店报账工具
 {
+    /// <summary>
+    /// 更新医生窗口
+    /// </summary>
     public partial class FormUpdateDoctor : Form
     {
         public FormCreateDoctor form;
@@ -19,6 +22,10 @@ namespace 药店报账工具
             
             
         }
+        /// <summary>
+        /// 不建议这样 建议这里要用DataRow就用构造函数传DataRow
+        /// </summary>
+        /// <param name="myForm"></param>
         public FormUpdateDoctor(FormCreateDoctor myForm)
         {
             InitializeComponent();

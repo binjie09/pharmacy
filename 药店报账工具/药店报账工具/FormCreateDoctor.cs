@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace 药店报账工具
 {
+    /// <summary>
+    /// 创建医生窗口
+    /// </summary>
     public partial class FormCreateDoctor : Form
     {
         private DataTable currentTable = MyData.pharmacyDS.Tables["Doctor"];

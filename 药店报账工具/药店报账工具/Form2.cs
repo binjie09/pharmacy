@@ -10,6 +10,9 @@ using System.Windows.Forms;
 
 namespace 药店报账工具
 {
+    /// <summary>
+    /// 确认窗口
+    /// </summary>
     public partial class Form2 : Form
     {
         

@@ -162,9 +162,15 @@ namespace 药店报账工具
             transactionRecordRow["Remark"] = Remark;
 
             transactionRecordRow["DateTime"] = DateTime.Now;
-        }
 
-        public double GetDoctorFeesByName(string name)//通过医生的名字获取诊费
+            pharmacyDS.Tables["TransactionRecord"].Rows.Add(transactionRecordRow);
+        }
+        /// <summary>
+        /// 通过医生的名字获取诊费
+        /// </summary>
+        /// <param name="name">医生姓名</param>
+        /// <returns></returns>
+        public double GetDoctorFeesByName(string name)
         {
             DataTable dt = Ds.Tables["Doctor"];
               DataRow[] drArr = dt.Select("Name='"+ name + "'");
