@@ -78,6 +78,7 @@ namespace 药店报账工具
             {
                 Caption = "Medicine price"
             };
+            DataColumn transactionRecordFeeColumn = new DataColumn("Fee", typeof(double));
             DataColumn transactionRecordManagementFeeColumn = new DataColumn("ManagementFee", typeof(double));
             DataColumn transactionRecordPackingFeeColumn = new DataColumn("PackingFee", typeof(double));
             DataColumn transactionRecordReplacementFeeColumn = new DataColumn("ReplacementFee", typeof(double));

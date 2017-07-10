@@ -24,7 +24,10 @@ namespace 药店报账工具
 
         private void InitDataGridView()//初始化DataGridView 内的数据，绑定数据源  窗口创建时被调用
         {
-            dataGridView1.DataSource = MyData.pharmacyDS.Tables["Doctor"];
+            DataTable  dt = new DataTable();
+            ExcelHelper.x2003.ExcelToTableForXLS("C:\\Users\\daqiang yi\\Desktop\\附件一：2017ACMICPC程序设计大赛报名表（新疆大学）(1).xls", dt, 2);
+            dataGridView1.DataSource = dt;
+            //dataGridView1.DataSource = MyData.pharmacyDS.Tables["Doctor"];
         }
 
         private void ButtonAdd_Click(object sender, EventArgs e)
