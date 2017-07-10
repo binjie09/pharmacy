@@ -80,8 +80,10 @@ namespace 药店报账工具
             }
             else
             {
-                FormUpdateDoctor form1 = new FormUpdateDoctor();
-                form1.Owner = this;
+                FormUpdateDoctor form1 = new FormUpdateDoctor()
+                {
+                    Owner = this
+                };
                 //this.AddOwnedForm(form1);
                 tempRow = rowToupdate[0];
                 form1.ShowDialog();
