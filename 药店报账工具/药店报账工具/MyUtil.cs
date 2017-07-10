@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using System.Reflection;
+
 namespace 药店报账工具
 {
     static class MyUtil // 一些工具类

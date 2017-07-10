@@ -27,6 +27,7 @@ namespace 药店报账工具
 
         private void InitDataGridView()//初始化DataGridView 内的数据，绑定数据源  窗口创建时被调用
         {
+            
             dataGridView1.DataSource = MyData.pharmacyDS.Tables["Doctor"];
         }
 
