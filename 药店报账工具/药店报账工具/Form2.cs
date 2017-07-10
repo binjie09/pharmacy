@@ -24,6 +24,7 @@ namespace 药店报账工具
         private double v5;
         private string v6;
         private string text2;
+        private double fees;
 
         public Form2()
         {
@@ -31,7 +32,7 @@ namespace 药店报账工具
         }
 
 
-        public Form2(string text1, double v1, double v2, double v3, double v4, double v5, string v6, string text2)
+        public Form2(string text1, double v1,double fees, double v2, double v3, double v4, double v5, string v6, string text2)
         {
             InitializeComponent();
             this.text1 = text1;
@@ -40,6 +41,7 @@ namespace 药店报账工具
             this.v3 = v3;
             this.v4 = v4;
             this.v5 = v5;
+            this.fees = fees;
             this.v6 = v6;
             this.text2 = text2;
             
@@ -56,11 +58,12 @@ namespace 药店报账工具
             label7.Text += v6;
             label8.Text += text2;
             label9.Text = System.DateTime.Now.ToString("f");
+            label10.Text += fees.ToString();
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            MyData.InsertToTransactionRecord(text1,v1,v2,v3,v4,v5,v6,text2);
+            MyData.InsertToTransactionRecord(text1,v1,fees,v2,v3,v4,v5,v6,text2);
             MyData.Save("normal");
             this.Close();
             

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.IO;
 
 namespace 药店报账工具
 {
@@ -167,13 +168,7 @@ namespace 药店报账工具
             transactionRecordRow["payWay"] = payWay;
             transactionRecordRow["Remark"] = Remark;
             transactionRecordRow["DateTime"] = DateTime.Now;
-<<<<<<< HEAD
-=======
-
-            pharmacyDS.Tables["TransactionRecord"].Rows.Add(transactionRecordRow);
-        }
->>>>>>> 543225bfc61f37e8e034a7e1de507eaebcf4dc20
-
+   
             pharmacyDS.Tables["TransactionRecord"].Rows.Add(transactionRecordRow);
         }
         /// <summary>
@@ -196,14 +191,13 @@ namespace 药店报账工具
         }
         public static int Save(string type)
         {
-           // MyUtil.DSToExcel("c:/pharmacy/sav.xls", pharmacyDS);
-            pharmacyDS.WriteXml("d:\\info.xml");
+            pharmacyDS.WriteXml(@".\info.xml");
             return 0;
         }
         public static int Load(string type ) //情况同save  
         {
-            pharmacyDS.ReadXml("d:\\info.xml");
-            //pharmacyDS = MyUtil.ExcelToDS("c:/pharmacy/sav.xls");
+            if(File.Exists(@".\info.xml"))
+                 pharmacyDS.ReadXml(@".\info.xml");
             return 0;
         }
 
