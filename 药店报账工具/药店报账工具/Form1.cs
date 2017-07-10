@@ -150,8 +150,11 @@ namespace 药店报账工具
                 MessageBox.Show("请输入正确的数字格式");
                 return;
             }
+            
 
-            ExcelHelper.x2003.TableToExcelForXLS(MyData.pharmacyDS.Tables["TransactionRecord"], "C:\\Users\\daqiang yi\\Desktop\\附件一：2017ACMICPC程序设计大赛报名表（新疆大学）(1).xls");
+            ExcelHelper.x2003.TableToExcelForXLS(MyData.pharmacyDS.Tables["TransactionRecord"] ,"C:\\Users\\daqiang yi\\Desktop\\附件一：2017ACMICPC程序设计大赛报名表（新疆大学）(1).xls", "asd",1);
+
+
             Init();
         }
         /// <summary>
