@@ -15,64 +15,25 @@ namespace 药店报账工具
     {
         public class x2003
         {
-            #region Excel2003
             /// <summary>
-            /// 将Excel文件中的数据读出到DataTable中(xls)
+            /// 将DataTable数据导出到Excel文件中(xls)
             /// </summary>
-            /// <param name="file"></param>
             /// <param name="dt"></param>
-            /// <param name="index"></param>
-            /// <returns></returns>
-            public static Boolean ExcelToTableForXLS(string file, DataTable dt, int index = 1)
-            {
-                try{
-                    using (FileStream fs = new FileStream(file, FileMode.Open, FileAccess.Read))
-                    {
-                        HSSFWorkbook hssfworkbook = new HSSFWorkbook(fs);
-                        ISheet sheet = hssfworkbook.GetSheetAt(0);
-                        IRow headerRow = sheet.GetRow(1);
-                        int cellCount = headerRow.LastCellNum;
-
-
-                        for (int i = (sheet.FirstRowNum + 1); i < sheet.LastRowNum; i ++)
-                        {
-                            IRow row = sheet.GetRow(i);
-                            DataRow dataRow = dt.NewRow();
-
-                            for(int j = row.FirstCellNum; j < cellCount; j++)
-                            {
-                                dataRow[j] = row.GetCell(j).ToString();
-                            }
-                        }
-                        hssfworkbook = null;
-                        sheet = null;
-                        headerRow = null;
-                      
-                    }
-                }
-                catch (Exception e)
-                {
-                    return false;
-                }
-                return true;
-            }
-
-                /// <summary>
-                /// 将DataTable数据导出到Excel文件中(xls)
-                /// </summary>
-                /// <param name="dt"></param>
-                /// <param name="file"></param>
-            public static void TableToExcelForXLS(DataTable dt, string file, int index = 1)
+            /// <param name="file"></param>
+            public static void TableToExcelForXLS(DataTable dt, string file)
             {
                 HSSFWorkbook hssfworkbook = new HSSFWorkbook();
                 ISheet sheet = hssfworkbook.CreateSheet("data");
 
                 //表头
-                IRow headerRow = sheet.CreateRow(index);
-                foreach (DataColumn column in dt.Columns)
-                    headerRow.CreateCell(column.Ordinal).SetCellValue(column.ColumnName);
+                IRow row = sheet.CreateRow(0);
+                for (int i = 0; i < dt.Columns.Count; i++)
+                {
+                    ICell cell = row.CreateCell(i);
+                    cell.SetCellValue(dt.Columns[i].ColumnName);
+                }
 
-               /* //数据
+                //数据
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     IRow row1 = sheet.CreateRow(i + 1);
@@ -81,20 +42,6 @@ namespace 药店报账工具
                         ICell cell = row1.CreateCell(j);
                         cell.SetCellValue(dt.Rows[i][j].ToString());
                     }
-                }*/
-                // handling value. 
-                int rowIndex = index + 1;
-
-                foreach (DataRow row in dt.Rows)
-                {
-                    HSSFRow dataRow = (HSSFRow)sheet.CreateRow(rowIndex);
-
-                    foreach (DataColumn column in dt.Columns)
-                    {
-                        dataRow.CreateCell(column.Ordinal).SetCellValue(row[column].ToString());
-                    }
-
-                    rowIndex++;
                 }
 
                 //转为字节数组
@@ -109,6 +56,7 @@ namespace 药店报账工具
                     fs.Flush();
                 }
             }
+
 
             /// <summary>
             /// 获取单元格类型(xls)
@@ -136,12 +84,6 @@ namespace 药店报账工具
                         return "=" + cell.CellFormula;
                 }
             }
-
-            internal static DataTable ExcelToTableForXLS(string filepath)
-            {
-                throw new NotImplementedException();
-            }
-            #endregion
         }
 
         public class x2007

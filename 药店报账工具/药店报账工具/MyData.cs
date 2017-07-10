@@ -69,7 +69,7 @@ namespace 药店报账工具
             teaPartyTable.Columns.AddRange(new DataColumn[] { teaPartyAmountColumn, teaPartyTotalPriceColumn, teaPartyRemarkColumn });
 
 
-            // 交易记录表的建立：交易的所有者、药价、管理费、包装费、代煎费、实收金额、时间、支付方式
+            // 交易记录表的建立：交易的所有者、药价、诊费、管理费、包装费、代煎费、实收金额、时间、支付方式
             DataColumn transactionRecordOwnerColumn = new DataColumn("Owner", typeof(string))
             {
                 Caption = "transaction's owner"
@@ -78,7 +78,10 @@ namespace 药店报账工具
             {
                 Caption = "Medicine price"
             };
-            DataColumn transactionRecordFeeColumn = new DataColumn("Fee", typeof(double));
+            DataColumn transactionRecordFeeColumn = new DataColumn("Fee", typeof(double))
+            {
+                Caption = "Doctor's fee"
+            };
             DataColumn transactionRecordManagementFeeColumn = new DataColumn("ManagementFee", typeof(double));
             DataColumn transactionRecordPackingFeeColumn = new DataColumn("PackingFee", typeof(double));
             DataColumn transactionRecordReplacementFeeColumn = new DataColumn("ReplacementFee", typeof(double));
@@ -92,7 +95,7 @@ namespace 药店报账工具
 
             DataTable transactionRecordTable = new DataTable("TransactionRecord");
             transactionRecordTable.Columns.AddRange(new DataColumn[] { transactionRecordOwnerColumn, transactionRecordMedicinePriceColumn,
-                transactionRecordManagementFeeColumn, transactionRecordPackingFeeColumn, transactionRecordReplacementFeeColumn,
+                transactionRecordFeeColumn, transactionRecordManagementFeeColumn, transactionRecordPackingFeeColumn, transactionRecordReplacementFeeColumn,
                 transactionRecordPaid_inAmountColumn, transactionRecordRemarkColumn, transactionRecordDateTimeColumn, transactionRecordPayWayColumn});
 
 
@@ -141,13 +144,14 @@ namespace 药店报账工具
         /// </summary>
         /// <param name="owner">这是医生，没有医生的时候插入字符串"无医生"</param>
         /// <param name="MedicinePrice"></param>
+        /// <param name="Fee"></param>
         /// <param name="ManagementFee"></param>
         /// <param name="PackingFee"></param>
         /// <param name="RepalcementFee"></param>
         /// <param name="Paid_inAmount"></param>
         /// <param name="payWay">支付方式 是支付宝、现金等</param>
         /// <param name="Remark"></param>
-        public static void InsertToTransactionRecord(string owner, double MedicinePrice, double ManagementFee, double PackingFee,
+        public static void InsertToTransactionRecord(string owner, double MedicinePrice, double Fee,double ManagementFee, double PackingFee,
             double RepalcementFee, double Paid_inAmount, string payWay = "", string Remark = "")
         {
             DataRow transactionRecordRow = null;
@@ -155,14 +159,16 @@ namespace 药店报账工具
 
             transactionRecordRow["Owner"] = owner;
             transactionRecordRow["Price"] = MedicinePrice;
+            transactionRecordRow["Fee"] = Fee;
             transactionRecordRow["ManagementFee"] = ManagementFee;
             transactionRecordRow["PackingFee"] = PackingFee;
             transactionRecordRow["ReplacementFee"] = RepalcementFee;
             transactionRecordRow["Paid_inAmount"] = Paid_inAmount;
             transactionRecordRow["payWay"] = payWay;
             transactionRecordRow["Remark"] = Remark;
-
             transactionRecordRow["DateTime"] = DateTime.Now;
+
+            pharmacyDS.Tables["TransactionRecord"].Rows.Add(transactionRecordRow);
         }
 
         public double GetDoctorFeesByName(string name)//通过医生的名字获取诊费
