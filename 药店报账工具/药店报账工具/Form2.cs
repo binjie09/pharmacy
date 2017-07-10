@@ -65,6 +65,8 @@ namespace 药店报账工具
         {
             MyData.InsertToTransactionRecord(text1,v1,fees,v2,v3,v4,v5,v6,text2);
             MyData.Save("normal");
+            ExcelHelper.x2003.TableToExcelForXLS(MyData.pharmacyDS.Tables["TransactionRecord"], @".\file.xls");
+
             this.Close();
             
         }

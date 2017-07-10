@@ -27,7 +27,6 @@ namespace 药店报账工具
 
         private void InitDataGridView()//初始化DataGridView 内的数据，绑定数据源  窗口创建时被调用
         {
-            
             dataGridView1.DataSource = MyData.pharmacyDS.Tables["Doctor"];
         }
 
@@ -48,6 +47,16 @@ namespace 药店报账工具
             catch (System.InvalidCastException)
             {
                 MessageBox.Show("诊费输入不正确！");
+                return;
+            }catch (System.FormatException)
+            {
+                MessageBox.Show("请输入正确的格式");
+                return;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("请检查输入");
+                return;
             }
 
             MyData.InsertToDoctor(_name, _fee, _remark);

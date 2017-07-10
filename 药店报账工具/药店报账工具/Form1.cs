@@ -63,15 +63,32 @@ namespace 药店报账工具
         /// </summary>
         private void FreshPrise()
         {
-            if (shishoujine.Text == "" || comboBoxDoctor.Text == "" || yaojia.Text == "")
+            try
             {
-                return;
+                double _fees = md.GetDoctorFeesByName(comboBoxDoctor.Text);
+                if (comboBoxDoctor.Text != "")
+                {
+                    fees.Text = _fees.ToString();
+                }
+                double _total = 0;
+                if (yaojia.Text != "")
+                {
+                    _total = (Convert.ToDouble(yaojia.Text) + _fees);
+                    total.Text = _total.ToString();
+                }
+                if (shishoujine.Text != "")
+                {
+                    zhaoling.Text = (Convert.ToDouble(shishoujine.Text) - _total).ToString();
+                }
             }
-            double _fees = md.GetDoctorFeesByName(comboBoxDoctor.Text);
-            fees.Text = _fees.ToString();
-            double _total = (Convert.ToDouble(yaojia.Text) + _fees);
-            zhaoling.Text = (Convert.ToDouble(shishoujine.Text) - _total).ToString();
-            total.Text = _total.ToString();
+            catch (FormatException)
+            {
+                MessageBox.Show("请输入正确的数字格式");
+            }
+
+
+
+
         }
 
         private void 输入总药价时(object sender, EventArgs e)
@@ -86,35 +103,54 @@ namespace 药店报账工具
 
         private void Button1_Click(object sender, EventArgs e) // 收款按钮按下
         {
-
-            System.DateTime currentTime = new System.DateTime(); //当前时间
-            currentTime = System.DateTime.Now;//时间
             string _name = comboBoxDoctor.Text; //医生姓名
-            double _total = Convert.ToDouble(total.Text);//总价格 包括医生的诊费等
-            string _remark = textRemark.Text;//备注
-            if (_name == "")
+            try
             {
-                MessageBox.Show("请选择医生");
-                return;
+                if (_name == "")
+                {
+                    MessageBox.Show("请选择医生");
+                    return;
+                }
+                else if (total.Text == "")
+                {
+                    MessageBox.Show("请输入总药价");
+                    return;
+                }
+                else if (shishoujine.Text == "")
+                {
+                    MessageBox.Show("请输入实收金额");
+                    return;
+                }
+                else if (Convert.ToDouble(zhaoling.Text) < 0)
+                {
+                    MessageBox.Show("实收金额低于总价，请检查");
+                    return;
+                }
+                System.DateTime currentTime = new System.DateTime(); //当前时间
+                currentTime = System.DateTime.Now;//时间
+
+                double _total = 0;//总价格 包括医生的诊费等
+                string _remark = textRemark.Text;//备注
+
+                _total = Convert.ToDouble(total.Text);
+
+                Form2 from2 = new Form2(comboBoxDoctor.Text,
+                   Convert.ToDouble(yaojia.Text),
+                   Convert.ToDouble(fees.Text),
+                   0.0,
+                   0.0,
+                   0.0,
+                   Convert.ToDouble(shishoujine.Text) - Convert.ToDouble(zhaoling.Text),
+                   "现金",
+                   textRemark.Text);
+                from2.ShowDialog();
             }
-            else if (Convert.ToDouble(zhaoling.Text) < 0)
+            catch (Exception)
             {
-                MessageBox.Show("实收金额低于总价，请检查");
+                MessageBox.Show("请输入正确的数字格式");
                 return;
             }
 
-            Form2 from2 = new Form2(comboBoxDoctor.Text,
-               Convert.ToDouble(yaojia.Text),
-               Convert.ToDouble(fees.Text),
-               0.0,
-               0.0,
-               0.0,
-               Convert.ToDouble(shishoujine.Text) - Convert.ToDouble(zhaoling.Text),
-               "现金",
-               textRemark.Text);
-            from2.ShowDialog();
-
-           
 
             Init();
         }
