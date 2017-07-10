@@ -100,6 +100,7 @@ namespace 药店报账工具
             pharmacyDS.Tables.Add(patentMedicineTable);
             pharmacyDS.Tables.Add(teaPartyTable);
             pharmacyDS.Tables.Add(transactionRecordTable);
+            Load("open");
         }
         // 将信息插入到 doctor 这张表中
         public static void InsertToDoctor(string name, double fee, string remark = "") 
@@ -135,7 +136,17 @@ namespace 药店报账工具
             pharmacyDS.Tables["teaParty"].Rows.Add(teaPartyRow);
         }
 
-        // 将信息插入到 transactionRecord 中
+        /// <summary>
+        ///  /// 将信息插入到 transactionRecord 中
+        /// </summary>
+        /// <param name="owner">这是医生，没有医生的时候插入字符串"无医生"</param>
+        /// <param name="MedicinePrice"></param>
+        /// <param name="ManagementFee"></param>
+        /// <param name="PackingFee"></param>
+        /// <param name="RepalcementFee"></param>
+        /// <param name="Paid_inAmount"></param>
+        /// <param name="payWay">支付方式 是支付宝、现金等</param>
+        /// <param name="Remark"></param>
         public static void InsertToTransactionRecord(string owner, double MedicinePrice, double ManagementFee, double PackingFee,
             double RepalcementFee, double Paid_inAmount, string payWay = "", string Remark = "")
         {
@@ -154,19 +165,29 @@ namespace 药店报账工具
             transactionRecordRow["DateTime"] = DateTime.Now;
         }
 
-        public int GetDoctorFeesByName(string name)//通过医生的名字获取诊费
+        public double GetDoctorFeesByName(string name)//通过医生的名字获取诊费
         {
-            
-            return 0;
+            DataTable dt = Ds.Tables["Doctor"];
+              DataRow[] drArr = dt.Select("Name='"+ name + "'");
+            DataRow dw = null;
+            if (drArr.Length != 0)
+            {
+                dw = (DataRow)drArr.GetValue(0);
+                return (double)dw[1];
+            }
+            else
+                return 0;
         }
-        public static int Save(string type)//根据数据类型保存数据,type可以是医生，病人，打印的票据 等 有几种type就应该有几种保存的文件  成功保存返回0 否则返回-1
+        public static int Save(string type)
         {
-            MyUtil.DSToExcel("c:/pharmacy/sav.xls", pharmacyDS);
+           // MyUtil.DSToExcel("c:/pharmacy/sav.xls", pharmacyDS);
+            pharmacyDS.WriteXml("d:\\info.xml");
             return 0;
         }
         public static int Load(string type ) //情况同save  
         {
-            pharmacyDS = MyUtil.ExcelToDS("c:/pharmacy/sav.xls");
+            pharmacyDS.ReadXml("d:\\info.xml");
+            //pharmacyDS = MyUtil.ExcelToDS("c:/pharmacy/sav.xls");
             return 0;
         }
 
