@@ -99,6 +99,7 @@ namespace 药店报账工具
             pharmacyDS.Tables.Add(patentMedicineTable);
             pharmacyDS.Tables.Add(teaPartyTable);
             pharmacyDS.Tables.Add(transactionRecordTable);
+            Load("open");
         }
         // 将信息插入到 doctor 这张表中
         public static void InsertToDoctor(string name, double fee, string remark = "") 
@@ -176,14 +177,16 @@ namespace 药店报账工具
             else
                 return 0;
         }
-        public static int Save(string type)//根据数据类型保存数据,type可以是医生，病人，打印的票据 等 有几种type就应该有几种保存的文件  成功保存返回0 否则返回-1
+        public static int Save(string type)
         {
-            MyUtil.DSToExcel("c:/pharmacy/sav.xls", pharmacyDS);
+           // MyUtil.DSToExcel("c:/pharmacy/sav.xls", pharmacyDS);
+            pharmacyDS.WriteXml("d:\\info.xml");
             return 0;
         }
         public static int Load(string type ) //情况同save  
         {
-            pharmacyDS = MyUtil.ExcelToDS("c:/pharmacy/sav.xls");
+            pharmacyDS.ReadXml("d:\\info.xml");
+            //pharmacyDS = MyUtil.ExcelToDS("c:/pharmacy/sav.xls");
             return 0;
         }
 

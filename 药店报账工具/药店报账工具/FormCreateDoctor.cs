@@ -69,6 +69,7 @@ namespace 药店报账工具
             {
                 MessageBox.Show(ex.Message);
             }
+            MyData.Save("delete Doctor");
         }
 
         private void ButtonUpdate_Click(object sender, EventArgs e)
@@ -89,6 +90,7 @@ namespace 药店报账工具
                 form1.ShowDialog();
                 MyData.pharmacyDS.Tables["Doctor"].AcceptChanges();
             }
+            MyData.Save("alter Doctor");
         }
     }
 }
