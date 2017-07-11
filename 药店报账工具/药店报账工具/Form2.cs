@@ -65,7 +65,8 @@ namespace 药店报账工具
         {
             MyData.InsertToTransactionRecord(text1,v1,fees,v2,v3,v4,v5,v6,text2);
             MyData.Save("normal");
-            ExcelHelper.x2003.TableToExcelForXLS(MyData.pharmacyDS.Tables["TransactionRecord"], "C:\\Users\\daqiang yi\\Desktop\\附件一：2017ACMICPC程序设计大赛报名表（新疆大学）(1).xls", "asd", 1);
+            ExcelHelper.x2003.TableToExcelForXLS(MyData.pharmacyDS.Tables["TransactionRecord"], @".\file.xls");
+
             this.Close();
             
         }

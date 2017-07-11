@@ -170,6 +170,7 @@ namespace 药店报账工具
             transactionRecordRow["DateTime"] = DateTime.Now;
    
             pharmacyDS.Tables["TransactionRecord"].Rows.Add(transactionRecordRow);
+
         }
         /// <summary>
         /// 通过医生的名字获取诊费
