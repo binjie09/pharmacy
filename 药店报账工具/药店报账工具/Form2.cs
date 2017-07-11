@@ -25,7 +25,6 @@ namespace 药店报账工具
         private string v6;
         private string text2;
         private double fees;
-
         public Form2()
         {
             InitializeComponent();
@@ -44,7 +43,7 @@ namespace 药店报账工具
             this.fees = fees;
             this.v6 = v6;
             this.text2 = text2;
-            
+ 
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -59,16 +58,25 @@ namespace 药店报账工具
             label8.Text += text2;
             label9.Text = System.DateTime.Now.ToString("f");
             label10.Text += fees.ToString();
+            this.AcceptButton = btnConfirm;
+
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
             MyData.InsertToTransactionRecord(text1,v1,fees,v2,v3,v4,v5,v6,text2);
+            ExcelHelper.x2003.TableToExcelForXLS(MyData.pharmacyDS.Tables["TransactionRecord"], "C:\\Users\\daqiang yi\\Desktop\\附件一：2017ACMICPC程序设计大赛报名表（新疆大学）(1).xls", "asd", 1);
             MyData.Save("normal");
-            ExcelHelper.x2003.TableToExcelForXLS(MyData.pharmacyDS.Tables["TransactionRecord"], @".\file.xls");
+            // ExcelHelper.x2003.TableToExcelForXLS(MyData.pharmacyDS.Tables["TransactionRecord"], @".\file.xls");
 
+            this.DialogResult = DialogResult.OK;
             this.Close();
-            
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

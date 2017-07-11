@@ -141,9 +141,14 @@ namespace 药店报账工具
                    0.0,
                    0.0,
                    Convert.ToDouble(shishoujine.Text) - Convert.ToDouble(zhaoling.Text),
-                   "现金",
+                   comboBox1.Text,
                    textRemark.Text);
-                from2.ShowDialog();
+                
+                DialogResult res  = from2.ShowDialog();
+                if(res == DialogResult.OK)
+                {
+                    Init();
+                }
             }
             catch (Exception)
             {
@@ -151,11 +156,6 @@ namespace 药店报账工具
                 return;
             }
             
-
-            ExcelHelper.x2003.TableToExcelForXLS(MyData.pharmacyDS.Tables["TransactionRecord"] ,"C:\\Users\\daqiang yi\\Desktop\\附件一：2017ACMICPC程序设计大赛报名表（新疆大学）(1).xls", "asd",1);
-
-
-            Init();
         }
         /// <summary>
         /// 初始化价格输入框
