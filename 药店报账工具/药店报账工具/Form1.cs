@@ -114,7 +114,7 @@ namespace 药店报账工具
                textRemark.Text);
             from2.ShowDialog();
 
-            ExcelHelper.x2003.TableToExcelForXLS(MyData.pharmacyDS.Tables["TransactionRecord"], "C:\\Users\\daqiang yi\\Desktop\\附件一：2017ACMICPC程序设计大赛报名表（新疆大学）(1).xls");
+           
 
             Init();
         }

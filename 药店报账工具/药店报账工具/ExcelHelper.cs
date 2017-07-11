@@ -28,7 +28,8 @@ namespace 药店报账工具
                 {
                     HSSFWorkbook hssfworkbook = new HSSFWorkbook();
                     ISheet sheet = hssfworkbook.CreateSheet(month);
-
+                    ISheet sheet1 = hssfworkbook.CreateSheet(month);
+                    ISheet sheet2 = hssfworkbook.CreateSheet(month);
                     // 当且仅当第一次交易时创建表头
                     if (index == 1)
                     {

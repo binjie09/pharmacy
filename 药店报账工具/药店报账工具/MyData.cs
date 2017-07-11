@@ -191,6 +191,7 @@ namespace 药店报账工具
         }
         public static int Save(string type)
         {
+
             pharmacyDS.WriteXml(@".\info.xml");
             return 0;
         }
