@@ -198,6 +198,11 @@ namespace 药店报账工具
             pharmacyDS.WriteXml(@".\info.xml");
             return 0;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
         public static int Load(string type ) //情况同save  
         {
             if(File.Exists(@".\info.xml"))

@@ -52,6 +52,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.textRemark = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
@@ -255,11 +257,36 @@
             this.label11.TabIndex = 20;
             this.label11.Text = "备注：";
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "现金",
+            "支付宝",
+            "微信付款",
+            "银行卡"});
+            this.comboBox1.Location = new System.Drawing.Point(397, 148);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 20);
+            this.comboBox1.TabIndex = 21;
+            this.comboBox1.Text = "现金";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(315, 152);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(65, 12);
+            this.label12.TabIndex = 22;
+            this.label12.Text = "支付方式：";
+            // 
             // form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(780, 557);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.textRemark);
             this.Controls.Add(this.button1);
@@ -318,6 +345,8 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textRemark;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label12;
     }
 }
 

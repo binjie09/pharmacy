@@ -141,17 +141,21 @@ namespace 药店报账工具
                    0.0,
                    0.0,
                    Convert.ToDouble(shishoujine.Text) - Convert.ToDouble(zhaoling.Text),
-                   "现金",
+                   comboBox1.Text,
                    textRemark.Text);
-                from2.ShowDialog();
+                
+                DialogResult res  = from2.ShowDialog();
+                if(res == DialogResult.OK)
+                {
+                    Init();
+                }
             }
             catch (Exception)
             {
                 MessageBox.Show("请输入正确的数字格式");
                 return;
             }
-
-            Init();
+            
         }
         /// <summary>
         /// 初始化价格输入框
