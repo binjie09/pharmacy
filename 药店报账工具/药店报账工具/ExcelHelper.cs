@@ -8,7 +8,6 @@ using System.IO;
 using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
-using NPOI.POIFS.FileSystem;
 
 namespace 药店报账工具
 {
@@ -22,26 +21,24 @@ namespace 药店报账工具
             /// <param name="dt"></param>
             /// <param name="file"></param>
             /// <param name="month"></param>
-            public static void TableToExcelForXLS(DataRow rows, string file, string month)
+            /// <param name="index"></param>
+            public static void TableToExcelForXLS(DataTable dt, string file, string month,int index)
             {
                 month = "total";
                 try
                 {
-                    FileStream fs = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.ReadWrite); //读取流
-                    POIFSFileSystem ps = new POIFSFileSystem(fs);
-                    IWorkbook workbook = new HSSFWorkbook(ps);
-                    ISheet sheet = workbook.GetSheet(month);
-                    IRow row;
+                    HSSFWorkbook hssfworkbook = new HSSFWorkbook();
+                    ISheet sheet = hssfworkbook.CreateSheet(month);
 
-                    if (sheet == null)
+                    // 当且仅当第一次交易时创建表头
+                    if (index == 1)
                     {
-                        sheet = workbook.CreateSheet(month);
-                        // 创建表头
-                        row = sheet.CreateRow(0);//得到表头
-                        for (int i = 0; i < MyData.pharmacyDS.Tables["TransactionRecord"].Columns.Count; i++)
+                        //表头
+                        IRow row = sheet.CreateRow(0);
+                        for (int i = 0; i < dt.Columns.Count; i++)
                         {
                             ICell cell = row.CreateCell(i);
-                            cell.SetCellValue(MyData.pharmacyDS.Tables["TransactionRecord"].Columns[i].ColumnName);
+                            cell.SetCellValue(dt.Columns[i].ColumnName);
                         }
                         ICell cells = row.CreateCell(10);
                         cells.SetCellValue("月份");

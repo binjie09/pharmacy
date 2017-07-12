@@ -158,11 +158,10 @@ namespace 药店报账工具
         /// <param name="Paid_inAmount"></param>
         /// <param name="payWay">支付方式 是支付宝、现金等</param>
         /// <param name="Remark"></param>
-        public static DateTime InsertToTransactionRecord(string owner, double MedicinePrice, double Fee,double ManagementFee, double PackingFee,
+        public static void InsertToTransactionRecord(string owner, double MedicinePrice, double Fee,double ManagementFee, double PackingFee,
             double RepalcementFee, double Paid_inAmount, string payWay = "", string Remark = "")
         {
             DataRow transactionRecordRow = null;
-            DateTime retTime = DateTime.Now;
             transactionRecordRow = pharmacyDS.Tables["TransactionRecord"].NewRow();
 
             transactionRecordRow["Owner"] = owner;
