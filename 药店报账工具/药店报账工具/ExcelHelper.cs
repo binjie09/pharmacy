@@ -8,6 +8,11 @@ using System.IO;
 using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
+using NPOI.POIFS.FileSystem;
+
+using NPOI.SS.UserModel;
+using NPOI.HSSF.UserModel;
+
 
 namespace 药店报账工具
 {
@@ -18,52 +23,44 @@ namespace 药店报账工具
             /// <summary>
             /// 将DataTable数据导出到Excel文件中(xls)
             /// </summary>
-            /// <param name="dt"></param>
+            /// <param name="rows"></param>
             /// <param name="file"></param>
             /// <param name="month"></param>
-            /// <param name="index"></param>
-            public static void TableToExcelForXLS(DataTable dt, string file, string month,int index)
+            public static void TableToExcelForXLS(DataRow rows, string file, string month)
             {
                 try
                 {
-                    HSSFWorkbook hssfworkbook = new HSSFWorkbook();
-                    ISheet sheet = hssfworkbook.CreateSheet(month);
-                    ISheet sheet1 = hssfworkbook.CreateSheet(month);
-                    ISheet sheet2 = hssfworkbook.CreateSheet(month);
-                    // 当且仅当第一次交易时创建表头
-                    if (index == 1)
+                    FileStream fs = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.ReadWrite); //读取流
+                    POIFSFileSystem ps = new POIFSFileSystem(fs);
+                    IWorkbook workbook = new HSSFWorkbook(ps);
+                    ISheet sheet = workbook.GetSheet(month);
+                    IRow row;
+
+                    if (sheet == null)
                     {
-                        //表头
-                        IRow row = sheet.CreateRow(0);
-                        for (int i = 0; i < dt.Columns.Count; i++)
+                        sheet = workbook.CreateSheet(month);
+                        // 创建表头
+                        row = sheet.CreateRow(0);//得到表头
+                        for (int i = 0; i < MyData.pharmacyDS.Tables["TransactionRecord"].Columns.Count; i++)
                         {
                             ICell cell = row.CreateCell(i);
-                            cell.SetCellValue(dt.Columns[i].ColumnName);
+                            cell.SetCellValue(MyData.pharmacyDS.Tables["TransactionRecord"].Columns[i].ColumnName);
                         }
                     }
-
-                    //数据
-                    for (int i = index; i < dt.Rows.Count; i++)
+                    FileStream fout = new FileStream(file, FileMode.Open, FileAccess.Write, FileShare.ReadWrite);
+                    //row = sheet.CreateRow((sheet.LastRowNum + 1));//在工作表中添加一行
+                    // 在最后一行插入数据
+                    IRow row1 = sheet.CreateRow(sheet.LastRowNum + 1);
+                    for (int j = 0; j < 10; j++)
                     {
-                        IRow row1 = sheet.CreateRow(i + 1);
-                        for (int j = 0; j < dt.Columns.Count; j++)
-                        {
-                            ICell cell = row1.CreateCell(j);
-                            cell.SetCellValue(dt.Rows[i][j].ToString());
-                        }
+                        ICell cell = row1.CreateCell(j);
+                        cell.SetCellValue(rows[j].ToString());
                     }
 
-                    //转为字节数组
-                    MemoryStream stream = new MemoryStream();
-                    hssfworkbook.Write(stream);
-                    var buf = stream.ToArray();
-
-                    //保存为Excel文件
-                    using (FileStream fs = new FileStream(file, FileMode.Create, FileAccess.Write))
-                    {
-                        fs.Write(buf, 0, buf.Length);
-                        fs.Flush();
-                    }
+                    fout.Flush();
+                    workbook.Write(fout);//写入文件
+                    workbook = null;
+                    fout.Close();
                 }
                 catch(Exception e)
                 {
@@ -72,7 +69,7 @@ namespace 药店报账工具
                 
             }
 
-
+      
             /// <summary>
             /// 获取单元格类型(xls)
             /// </summary>
