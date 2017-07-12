@@ -64,10 +64,21 @@ namespace 药店报账工具
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            MyData.InsertToTransactionRecord(text1,v1,fees,v2,v3,v4,v5,v6,text2);
-            ExcelHelper.x2003.TableToExcelForXLS(MyData.pharmacyDS.Tables["TransactionRecord"], "C:\\Users\\daqiang yi\\Desktop\\附件一：2017ACMICPC程序设计大赛报名表（新疆大学）(1).xls", "asd", 1);
+            DateTime Guid = MyData.InsertToTransactionRecord(text1, v1, fees, v2, v3, v4, v5, v6, text2);
             MyData.Save("normal");
-            // ExcelHelper.x2003.TableToExcelForXLS(MyData.pharmacyDS.Tables["TransactionRecord"], @".\file.xls");
+
+            //DataRow[] rows = MyData.pharmacyDS.Tables["TransactionRecord"].Select("DateTime = ");
+            DataRow rows = null;
+            for (int curRow = 0; curRow < MyData.pharmacyDS.Tables["TransactionRecord"].Rows.Count; curRow++)
+            {
+                if (MyData.pharmacyDS.Tables["TransactionRecord"].Rows[curRow][8].ToString().Equals(Guid.ToString()))
+                {
+                    rows = MyData.pharmacyDS.Tables["TransactionRecord"].Rows[curRow];
+                }
+            }
+
+            string month = "" + Guid.Year + "年" + Guid.Month + "月";
+            ExcelHelper.x2003.TableToExcelForXLS(rows, @".\file.xls", month);
 
             this.DialogResult = DialogResult.OK;
             this.Close();
