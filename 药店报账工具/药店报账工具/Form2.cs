@@ -25,7 +25,6 @@ namespace 药店报账工具
         private string v6;
         private string text2;
         private double fees;
-
         public Form2()
         {
             InitializeComponent();
@@ -44,7 +43,7 @@ namespace 药店报账工具
             this.fees = fees;
             this.v6 = v6;
             this.text2 = text2;
-            
+ 
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -59,28 +58,31 @@ namespace 药店报账工具
             label8.Text += text2;
             label9.Text = System.DateTime.Now.ToString("f");
             label10.Text += fees.ToString();
+            this.AcceptButton = btnConfirm;
+
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            DateTime Guid =MyData.InsertToTransactionRecord(text1,v1,fees,v2,v3,v4,v5,v6,text2);
+            DateTime Guid = MyData.InsertToTransactionRecord(text1, v1, fees, v2, v3, v4, v5, v6, text2);
             MyData.Save("normal");
-
-            //DataRow[] rows = MyData.pharmacyDS.Tables["TransactionRecord"].Select("DateTime = ");
+            //MyData.pharmacyDS.Tables["Counter"].Rows[0];
             DataRow rows = null;
-            for(int curRow = 0; curRow < MyData.pharmacyDS.Tables["TransactionRecord"].Rows.Count; curRow ++)
+            if (MyData.pharmacyDS.Tables["TransactionRecord"].Rows[MyData.pharmacyDS.Tables["TransactionRecord"].Rows.Count-1][8].ToString().Equals(Guid.ToString()))
             {
-                if (MyData.pharmacyDS.Tables["TransactionRecord"].Rows[curRow][8].ToString().Equals(Guid.ToString()))
-                {
-                    rows = MyData.pharmacyDS.Tables["TransactionRecord"].Rows[curRow];
-                }
+                rows = MyData.pharmacyDS.Tables["TransactionRecord"].Rows[MyData.pharmacyDS.Tables["TransactionRecord"].Rows.Count-1];
             }
-
-            string month = "" + Guid.Year+ "年" + Guid.Month + "月";
+            string month = "" + Guid.Year + "年" + Guid.Month + "月";
             ExcelHelper.x2003.TableToExcelForXLS(rows, @".\file.xls", month);
 
+            this.DialogResult = DialogResult.OK;
             this.Close();
-            
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

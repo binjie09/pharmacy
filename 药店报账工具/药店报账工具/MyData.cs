@@ -8,14 +8,14 @@ namespace 药店报账工具
     {
         public static DataSet pharmacyDS = new DataSet("pharmacy"); //存储
         String path = null; //存储路径
-
+        
         public DataSet Ds { get => pharmacyDS; set => pharmacyDS = value; }
         public string Path { get => path; set => path = value; }
-
+        
         public MyData()
         { //构造函数
           // 药店的 DataSet 有几个不同的表：医生、中成药、茶方  
-
+            
             // 和医生表的建立：医生的姓名、诊费、备注
             DataColumn doctorNameColumn = new DataColumn("Name", typeof(string))
             {
@@ -32,6 +32,12 @@ namespace 药店报账工具
 
             DataTable doctorTable = new DataTable("Doctor");
             doctorTable.Columns.AddRange(new DataColumn[] { doctorNameColumn, doctorFreeColumn, doctorRemarkColumn });
+
+
+
+
+
+
 
 
             // 中成药表的建立：中成药的数量、总价、备注
@@ -152,11 +158,10 @@ namespace 药店报账工具
         /// <param name="Paid_inAmount"></param>
         /// <param name="payWay">支付方式 是支付宝、现金等</param>
         /// <param name="Remark"></param>
-        public static DateTime InsertToTransactionRecord(string owner, double MedicinePrice, double Fee,double ManagementFee, double PackingFee,
+        public static void InsertToTransactionRecord(string owner, double MedicinePrice, double Fee,double ManagementFee, double PackingFee,
             double RepalcementFee, double Paid_inAmount, string payWay = "", string Remark = "")
         {
             DataRow transactionRecordRow = null;
-            DateTime retTime = DateTime.Now;
             transactionRecordRow = pharmacyDS.Tables["TransactionRecord"].NewRow();
 
             transactionRecordRow["Owner"] = owner;
@@ -168,11 +173,13 @@ namespace 药店报账工具
             transactionRecordRow["Paid_inAmount"] = Paid_inAmount;
             transactionRecordRow["payWay"] = payWay;
             transactionRecordRow["Remark"] = Remark;
-            transactionRecordRow["DateTime"] = retTime.ToString();
-   
+            transactionRecordRow["DateTime"] = retTime;
+
             pharmacyDS.Tables["TransactionRecord"].Rows.Add(transactionRecordRow);
 
             return retTime;
+
+
         }
         /// <summary>
         /// 通过医生的名字获取诊费
@@ -194,7 +201,6 @@ namespace 药店报账工具
         }
         public static int Save(string type)
         {
-
             pharmacyDS.WriteXml(@".\info.xml");
             return 0;
         }

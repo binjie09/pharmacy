@@ -8,11 +8,6 @@ using System.IO;
 using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
-using NPOI.POIFS.FileSystem;
-
-using NPOI.SS.UserModel;
-using NPOI.HSSF.UserModel;
-
 
 namespace 药店报账工具
 {
@@ -23,59 +18,72 @@ namespace 药店报账工具
             /// <summary>
             /// 将DataTable数据导出到Excel文件中(xls)
             /// </summary>
-            /// <param name="rows"></param>
+            /// <param name="dt"></param>
             /// <param name="file"></param>
             /// <param name="month"></param>
-            public static void TableToExcelForXLS(DataRow rows, string file, string month)
+            /// <param name="index"></param>
+            public static void TableToExcelForXLS(DataTable dt, string file, string month,int index)
             {
+                month = "total";
                 try
                 {
-                    FileStream fs = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.ReadWrite); //读取流
-                    POIFSFileSystem ps = new POIFSFileSystem(fs);
-                    IWorkbook workbook = new HSSFWorkbook(ps);
-                    ISheet sheet = workbook.GetSheet(month);
-                    IRow row;
+                    HSSFWorkbook hssfworkbook = new HSSFWorkbook();
+                    ISheet sheet = hssfworkbook.CreateSheet(month);
 
-                    if (sheet == null)
+                    // 当且仅当第一次交易时创建表头
+                    if (index == 1)
                     {
-                        sheet = workbook.CreateSheet(month);
-                        // 创建表头
-                        row = sheet.CreateRow(0);//得到表头
-                        for (int i = 0; i < MyData.pharmacyDS.Tables["TransactionRecord"].Columns.Count; i++)
+                        //表头
+                        IRow row = sheet.CreateRow(0);
+                        for (int i = 0; i < dt.Columns.Count; i++)
                         {
                             ICell cell = row.CreateCell(i);
-                            cell.SetCellValue(MyData.pharmacyDS.Tables["TransactionRecord"].Columns[i].ColumnName);
+                            cell.SetCellValue(dt.Columns[i].ColumnName);
                         }
+                        ICell cells = row.CreateCell(10);
+                        cells.SetCellValue("月份");
                     }
                     FileStream fout = new FileStream(file, FileMode.Open, FileAccess.Write, FileShare.ReadWrite);
                     //row = sheet.CreateRow((sheet.LastRowNum + 1));//在工作表中添加一行
                     // 在最后一行插入数据
                     IRow row1 = sheet.CreateRow(sheet.LastRowNum + 1);
-                    for (int j = 0; j < 10; j++)
+                    ICell cell1 = row1.CreateCell(0);
+                    cell1.SetCellValue(rows[0].ToString());
+                    for (int j = 1; j < 7; j++)
+                    {
+                        ICell cell = row1.CreateCell(j);
+                        cell.SetCellValue((double)rows[j]);
+                    }
+                    for (int j = 7; j < 10; j++)
                     {
                         ICell cell = row1.CreateCell(j);
                         cell.SetCellValue(rows[j].ToString());
                     }
-
+                    ICell cellmon = row1.CreateCell(10);
+                    cellmon.SetCellValue(DateTime.Now.Year.ToString() + "年" + DateTime.Now.Month.ToString() + "月");
+                    //cell.SetCellValue()
                     fout.Flush();
                     workbook.Write(fout);//写入文件
                     workbook = null;
                     fout.Close();
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
 
                 }
-                
+
             }
 
-      
-            /// <summary>
-            /// 获取单元格类型(xls)
-            /// </summary>
-            /// <param name="cell"></param>
-            /// <returns></returns>
-            private static object GetValueTypeForXLS(HSSFCell cell)
+
+        }
+
+
+        /// <summary>
+        /// 获取单元格类型(xls)
+        /// </summary>
+        /// <param name="cell"></param>
+        /// <returns></returns>
+        private static object GetValueTypeForXLS(HSSFCell cell)
             {
                 if (cell == null)
                     return null;
@@ -346,20 +354,6 @@ namespace 药店报账工具
                 return table;
             }
         }
-        public static DataTable GetDataTable(string filepath)
-        {
-            var dt = new DataTable("xls");
-            if (filepath.Last() == 's')
-            {
-                //dt = x2003.ExcelToTableForXLS(filepath);
-            }
-            else
-            {
-                dt = x2007.ExcelToTableForXLSX(filepath);
-            }
-            return dt;
-        }
-    }
 
 
 }
