@@ -19,7 +19,7 @@ namespace 药店报账工具
             /// <summary>
             /// 将DataTable数据导出到Excel文件中(xls)
             /// </summary>
-            /// <param name="dt"></param>
+            /// <param name="rows"></param>
             /// <param name="file"></param>
             /// <param name="month"></param>
             public static void TableToExcelForXLS(DataRow rows, string file, string month)
