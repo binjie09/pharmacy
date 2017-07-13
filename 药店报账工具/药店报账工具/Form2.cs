@@ -72,8 +72,9 @@ namespace 药店报账工具
             {
                 rows = MyData.pharmacyDS.Tables["TransactionRecord"].Rows[MyData.pharmacyDS.Tables["TransactionRecord"].Rows.Count-1];
             }
-            string month = "" + Guid.Year + "年" + Guid.Month + "月";
-            ExcelHelper.x2003.TableToExcelForXLS(rows, @".\file.xls", month);
+            
+            ExcelHelper.x2003.TRTableToExcelForXLS(rows, @".\file.xls");
+
 
             this.DialogResult = DialogResult.OK;
             this.Close();

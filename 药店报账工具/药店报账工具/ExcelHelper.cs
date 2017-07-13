@@ -9,6 +9,7 @@ using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
 using NPOI.POIFS.FileSystem;
+using System.Windows.Forms;
 
 namespace 药店报账工具
 {
@@ -21,21 +22,21 @@ namespace 药店报账工具
             /// </summary>
             /// <param name="rows"></param>
             /// <param name="file"></param>
-            /// <param name="month"></param>
-            public static void TableToExcelForXLS(DataRow rows, string file, string month)
+            /// <param name="sheetname"></param>
+            public static void TRTableToExcelForXLS(DataRow rows, string file)
             {
-                month = "total";
+                string sheetname = "total";
                 try
                 {
                     FileStream fs = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.ReadWrite); //读取流
                     POIFSFileSystem ps = new POIFSFileSystem(fs);
                     IWorkbook workbook = new HSSFWorkbook(ps);
-                    ISheet sheet = workbook.GetSheet(month);
+                    ISheet sheet = workbook.GetSheet(sheetname);
                     IRow row;
 
                     if (sheet == null)
                     {
-                        sheet = workbook.CreateSheet(month);
+                        sheet = workbook.CreateSheet(sheetname);
                         // 创建表头
                         row = sheet.CreateRow(0);//得到表头
                         for (int i = 0; i < MyData.pharmacyDS.Tables["TransactionRecord"].Columns.Count; i++)
@@ -69,10 +70,72 @@ namespace 药店报账工具
                     workbook.Write(fout);//写入文件
                     workbook = null;
                     fout.Close();
+
                 }
                 catch (Exception e)
                 {
+                    MessageBox.Show("写入Excel错误！");
+                }
 
+            }
+            /// <summary>
+            /// 
+            /// </summary>
+            /// <param name="rows"></param>
+            /// <param name="file"></param>
+            /// <param name="typeTB">只有 Medicne 和 Tea 两种选择</param>
+            public static void PMAndTPTableToExcelForXLS(DataRow rows, string file, string typeTB)
+            {
+                string sheetname = typeTB;
+                try
+                {
+                    FileStream fs = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.ReadWrite); //读取流
+                    POIFSFileSystem ps = new POIFSFileSystem(fs);
+                    IWorkbook workbook = new HSSFWorkbook(ps);
+                    ISheet sheet = workbook.GetSheet(sheetname);
+                    IRow row;
+
+                    if (sheet == null)
+                    {
+                        sheet = workbook.CreateSheet(sheetname);
+                        // 创建表头
+                        row = sheet.CreateRow(0);//得到表头
+                        for (int i = 0; i < MyData.pharmacyDS.Tables["ChinesePatentMedicine"].Columns.Count; i++)
+                        {
+                            ICell cell = row.CreateCell(i);
+                            cell.SetCellValue(MyData.pharmacyDS.Tables["ChinesePatentMedicine"].Columns[i].ColumnName);
+                        }
+                        ICell cells = row.CreateCell(6);
+                        cells.SetCellValue("月份");
+                    }
+                    FileStream fout = new FileStream(file, FileMode.Open, FileAccess.Write, FileShare.ReadWrite);
+                    
+                    // 在最后一行插入数据
+                    IRow row1 = sheet.CreateRow(sheet.LastRowNum + 1);
+                    ICell cell1 = row1.CreateCell(0);
+                    cell1.SetCellValue(rows[0].ToString());
+                    for (int j = 1; j < 2; j++)
+                    {
+                        ICell cell = row1.CreateCell(j);
+                        cell.SetCellValue((double)rows[j]);
+                    }
+                    for (int j = 2; j < 5; j++)
+                    {
+                        ICell cell = row1.CreateCell(j);
+                        cell.SetCellValue(rows[j].ToString());
+                    }
+                    ICell cellmon = row1.CreateCell(6);
+                    cellmon.SetCellValue(DateTime.Now.Year.ToString() + "年" + DateTime.Now.Month.ToString() + "月");
+                    //cell.SetCellValue()
+                    fout.Flush();
+                    workbook.Write(fout);//写入文件
+                    workbook = null;
+                    fout.Close();
+
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("写入Excel错误！");
                 }
 
             }
