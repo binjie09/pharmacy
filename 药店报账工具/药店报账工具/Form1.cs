@@ -114,7 +114,7 @@ namespace 药店报账工具
         /// <param name="path">文件路径</param>
         private void SaveToFile(string path)
         {
-            FileStream fs = new FileStream("d:\\sav.dat", FileMode.OpenOrCreate);
+            FileStream fs = new FileStream(path, FileMode.OpenOrCreate);
             double[] d = new double[3];
             fs.Write(BitConverter.GetBytes(Convert.ToDouble(textGuanli.Text)), 0, 8);
             fs.Write(BitConverter.GetBytes(Convert.ToDouble(textBaozhuang.Text)), 0, 8);
