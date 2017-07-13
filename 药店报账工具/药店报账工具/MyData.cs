@@ -45,7 +45,7 @@ namespace 药店报账工具
             {
                 Caption = "Medicne's name"
             };
-            DataColumn patentMedicineAmountColumn = new DataColumn("Amount", typeof(int))
+            DataColumn patentMedicineAmountColumn = new DataColumn("Amount", typeof(double))
             {
                 Caption = "Medicne's amount"
             };
@@ -69,7 +69,7 @@ namespace 药店报账工具
             {
                 Caption = "Medicne's name"
             };
-            DataColumn teaPartyAmountColumn = new DataColumn("Amount", typeof(int))
+            DataColumn teaPartyAmountColumn = new DataColumn("Amount", typeof(double))
             {
                 Caption= "Tea's amount"
             };
@@ -149,7 +149,7 @@ namespace 药店报账工具
         /// <param name="price"></param>
         /// <param name="remark"></param>
         /// <returns></returns>        
-        public static DateTime InsertToPatentMedicine(string name, int amount, double price, string remark = "")
+        public static DateTime InsertToPatentMedicine(string name, double amount, double price, string remark = "")
         {
             DataRow patentMedicineRow = pharmacyDS.Tables["ChinesePatentMedicine"].NewRow();
             DateTime retDT = DateTime.Now;
@@ -173,7 +173,7 @@ namespace 药店报账工具
         /// <param name="price"></param>
         /// <param name="remark"></param>
         /// <returns></returns>
-        public static DateTime InsertToTeaParty(string name, int amount, double price, string remark ="")
+        public static DateTime InsertToTeaParty(string name, double amount, double price, string remark ="")
         {
             DataRow teaPartyRow = pharmacyDS.Tables["teaParty"].NewRow();
             DateTime retDT = DateTime.Now;

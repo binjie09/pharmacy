@@ -166,5 +166,16 @@ namespace 药店报账工具
             zhaoling.Text = "";
             total.Text = "";
         }
+
+        private void 中成药ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void 茶方ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Tea ft = new Tea();
+            ft.ShowDialog();
+        }
     }
 }

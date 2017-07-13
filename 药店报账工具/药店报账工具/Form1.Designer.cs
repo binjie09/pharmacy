@@ -54,6 +54,8 @@
             this.label11 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.中成药ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.茶方ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
@@ -61,7 +63,9 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.添加医生信息ToolStripMenuItem});
+            this.添加医生信息ToolStripMenuItem,
+            this.中成药ToolStripMenuItem1,
+            this.茶方ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(780, 25);
@@ -280,6 +284,20 @@
             this.label12.TabIndex = 22;
             this.label12.Text = "支付方式：";
             // 
+            // 中成药ToolStripMenuItem1
+            // 
+            this.中成药ToolStripMenuItem1.Name = "中成药ToolStripMenuItem1";
+            this.中成药ToolStripMenuItem1.Size = new System.Drawing.Size(56, 21);
+            this.中成药ToolStripMenuItem1.Text = "中成药";
+            this.中成药ToolStripMenuItem1.Click += new System.EventHandler(this.中成药ToolStripMenuItem1_Click);
+            // 
+            // 茶方ToolStripMenuItem
+            // 
+            this.茶方ToolStripMenuItem.Name = "茶方ToolStripMenuItem";
+            this.茶方ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+            this.茶方ToolStripMenuItem.Text = "茶方";
+            this.茶方ToolStripMenuItem.Click += new System.EventHandler(this.茶方ToolStripMenuItem_Click);
+            // 
             // form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -347,6 +365,8 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ToolStripMenuItem 中成药ToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem 茶方ToolStripMenuItem;
     }
 }
 
