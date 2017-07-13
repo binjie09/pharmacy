@@ -85,12 +85,41 @@ namespace 药店报账工具
             {
                 MessageBox.Show("请输入正确的数字格式");
             }
-
-
-
-
+            ReadFile("d:\\sav.dat");
         }
-
+       /// <summary>
+       /// 将最后一次输入的代煎费 管理费、包装费等保存在dat文件里 下次打开自动读取 这是读取文件
+       /// </summary>
+       /// <param name="path">文件路径</param>
+        private void ReadFile(string path)
+        {
+            FileStream fs = new FileStream(path, FileMode.Open);
+            Byte[] bt = new Byte[8];
+            fs.Read(bt, 0, 8);
+            double guanli = BitConverter.ToDouble(bt, 0);
+            fs.Read(bt, 0, 8);
+            double baozhuang = BitConverter.ToDouble(bt, 0);
+            fs.Read(bt, 0, 8);
+            double daijian = BitConverter.ToDouble(bt, 0);
+            textBaozhuang.Text = baozhuang.ToString();
+            textDaijian.Text = daijian.ToString();
+            textGuanli.Text = guanli.ToString();
+            fs.Close();
+        }
+        /// <summary>
+        /// 将最后一次输入的代煎费 管理费、包装费等保存在dat文件里 下次打开自动读取 这是保存文件
+        /// </summary>
+        /// <param name="path">文件路径</param>
+        private void SaveToFile(string path)
+        {
+            FileStream fs = new FileStream("d:\\sav.dat", FileMode.OpenOrCreate);
+            double[] d = new double[3];
+            fs.Write(BitConverter.GetBytes(Convert.ToDouble(textGuanli.Text)), 0, 8);
+            fs.Write(BitConverter.GetBytes(Convert.ToDouble(textBaozhuang.Text)), 0, 8);
+            fs.Write(BitConverter.GetBytes(Convert.ToDouble(textDaijian.Text)), 0, 8);
+            fs.Flush();
+            fs.Close();
+        }
         private void 输入总药价时(object sender, EventArgs e)
         {
             FreshPrise();
@@ -137,9 +166,9 @@ namespace 药店报账工具
                 Form2 from2 = new Form2(comboBoxDoctor.Text,
                    Convert.ToDouble(yaojia.Text),
                    Convert.ToDouble(fees.Text),
-                   0.0,
-                   0.0,
-                   0.0,
+                   Convert.ToDouble(textGuanli.Text),
+                   Convert.ToDouble(textBaozhuang.Text),
+                   Convert.ToDouble(textDaijian.Text),
                    Convert.ToDouble(shishoujine.Text) - Convert.ToDouble(zhaoling.Text),
                    comboBox1.Text,
                    textRemark.Text);
@@ -155,6 +184,7 @@ namespace 药店报账工具
                 MessageBox.Show("请输入正确的数字格式");
                 return;
             }
+            SaveToFile("d:\\sav.dat");
         }
         /// <summary>
         /// 初始化价格输入框
@@ -169,7 +199,8 @@ namespace 药店报账工具
 
         private void 中成药ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-
+            Medi fm = new Medi();
+            fm.ShowDialog();
         }
 
         private void 茶方ToolStripMenuItem_Click(object sender, EventArgs e)

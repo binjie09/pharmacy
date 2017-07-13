@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.添加医生信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxDoctor = new System.Windows.Forms.ComboBox();
@@ -56,6 +55,13 @@
             this.label12 = new System.Windows.Forms.Label();
             this.中成药ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.茶方ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lableGuanlifei = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.textGuanli = new System.Windows.Forms.TextBox();
+            this.textBaozhuang = new System.Windows.Forms.TextBox();
+            this.textDaijian = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
@@ -298,11 +304,68 @@
             this.茶方ToolStripMenuItem.Text = "茶方";
             this.茶方ToolStripMenuItem.Click += new System.EventHandler(this.茶方ToolStripMenuItem_Click);
             // 
+            // lableGuanlifei
+            // 
+            this.lableGuanlifei.AutoSize = true;
+            this.lableGuanlifei.Location = new System.Drawing.Point(48, 401);
+            this.lableGuanlifei.Name = "lableGuanlifei";
+            this.lableGuanlifei.Size = new System.Drawing.Size(53, 12);
+            this.lableGuanlifei.TabIndex = 24;
+            this.lableGuanlifei.Text = "管理费：";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(48, 442);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(53, 12);
+            this.label15.TabIndex = 25;
+            this.label15.Text = "包装费：";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(48, 483);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(53, 12);
+            this.label16.TabIndex = 26;
+            this.label16.Text = "代煎费：";
+            // 
+            // textGuanli
+            // 
+            this.textGuanli.Location = new System.Drawing.Point(107, 398);
+            this.textGuanli.Name = "textGuanli";
+            this.textGuanli.Size = new System.Drawing.Size(121, 21);
+            this.textGuanli.TabIndex = 27;
+            this.textGuanli.Text = "1";
+            // 
+            // textBaozhuang
+            // 
+            this.textBaozhuang.Location = new System.Drawing.Point(107, 439);
+            this.textBaozhuang.Name = "textBaozhuang";
+            this.textBaozhuang.Size = new System.Drawing.Size(121, 21);
+            this.textBaozhuang.TabIndex = 28;
+            this.textBaozhuang.Text = "1";
+            // 
+            // textDaijian
+            // 
+            this.textDaijian.Location = new System.Drawing.Point(107, 480);
+            this.textDaijian.Name = "textDaijian";
+            this.textDaijian.Size = new System.Drawing.Size(121, 21);
+            this.textDaijian.TabIndex = 29;
+            this.textDaijian.Text = "1";
+            // 
             // form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(780, 557);
+            this.Controls.Add(this.textDaijian);
+            this.Controls.Add(this.textBaozhuang);
+            this.Controls.Add(this.textGuanli);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.lableGuanlifei);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label11);
@@ -367,6 +430,12 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ToolStripMenuItem 中成药ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem 茶方ToolStripMenuItem;
+        private System.Windows.Forms.Label lableGuanlifei;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox textGuanli;
+        private System.Windows.Forms.TextBox textBaozhuang;
+        private System.Windows.Forms.TextBox textDaijian;
     }
 }
 

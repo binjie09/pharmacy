@@ -19,16 +19,45 @@ namespace 药店报账工具
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string name = label1.Text;
-            MyData.InsertToPatentMedicine(,)
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            string name = textBox1.Text;
+            if(name == "")
+            {
+                MessageBox.Show("请输入药名");
+                return;
+            }
+            try
+            {
+                double danjia = Convert.ToDouble(textBox2.Text);
+                double shuliang = Convert.ToDouble(textBox3.Text);
+                double zongjia = shuliang * danjia;
+                MyData.InsertToPatentMedicine(name, shuliang, danjia, "");
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            catch
+            {
+                MessageBox.Show("在转换数字的时候发生了问题。");
+            }
         }
-
+        
         private void button2_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+        /// <summary>
+        /// 更新总价
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void FreshZongjia(object sender, EventArgs e)
+        {
+            if(textBox2.Text!="" && textBox3.Text != "")
+            {
+                double danjia = Convert.ToDouble(textBox2.Text);
+                double shuliang = Convert.ToDouble(textBox3.Text);
+                textBox4.Text = (danjia * shuliang).ToString(); 
+            }
         }
     }
 }

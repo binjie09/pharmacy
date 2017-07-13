@@ -44,6 +44,7 @@
             // 
             this.textBox4.Location = new System.Drawing.Point(84, 212);
             this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(100, 21);
             this.textBox4.TabIndex = 15;
             // 
@@ -53,6 +54,7 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 21);
             this.textBox3.TabIndex = 14;
+            this.textBox3.TextChanged += new System.EventHandler(this.FreshZongjia);
             // 
             // textBox2
             // 
@@ -60,6 +62,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 21);
             this.textBox2.TabIndex = 13;
+            this.textBox2.TextChanged += new System.EventHandler(this.FreshZongjia);
             // 
             // textBox1
             // 
@@ -128,7 +131,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(318, 366);
+            this.ClientSize = new System.Drawing.Size(319, 363);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox4);
@@ -140,7 +143,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Medi";
-            this.Text = "Medi";
+            this.Text = "中成药";
             this.ResumeLayout(false);
             this.PerformLayout();
 

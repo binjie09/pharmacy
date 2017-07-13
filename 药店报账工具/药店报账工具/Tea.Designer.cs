@@ -89,6 +89,7 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(100, 21);
             this.textBox2.TabIndex = 5;
+            this.textBox2.TextChanged += new System.EventHandler(this.FreshZongjia);
             // 
             // textBox3
             // 
@@ -96,11 +97,13 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 21);
             this.textBox3.TabIndex = 6;
+            this.textBox3.TextChanged += new System.EventHandler(this.FreshZongjia);
             // 
             // textBox4
             // 
             this.textBox4.Location = new System.Drawing.Point(82, 206);
             this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
             this.textBox4.Size = new System.Drawing.Size(100, 21);
             this.textBox4.TabIndex = 7;
             // 
@@ -140,7 +143,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Tea";
-            this.Text = "Tea";
+            this.Text = "茶方";
             this.ResumeLayout(false);
             this.PerformLayout();
 
