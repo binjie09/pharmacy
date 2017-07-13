@@ -48,11 +48,18 @@ namespace 药店报账工具
 
         private void FreshZongjia(object sender, EventArgs e)
         {
-            if (textBox2.Text != "" && textBox3.Text != "")
+            try
             {
-                double danjia = Convert.ToDouble(label2.Text);
-                double shuliang = Convert.ToDouble(label3.Text);
-                textBox4.Text = (danjia * shuliang).ToString();
+                if (textBox2.Text != "" && textBox3.Text != "")
+                {
+                    double danjia = Convert.ToDouble(textBox2.Text);
+                    double shuliang = Convert.ToDouble(textBox3.Text);
+                    textBox4.Text = (danjia * shuliang).ToString();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("请输入正确的数字格式");
             }
         }
     }

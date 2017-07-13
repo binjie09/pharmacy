@@ -20,7 +20,7 @@ namespace 药店报账工具
         private void button1_Click(object sender, EventArgs e)
         {
             string name = textBox1.Text;
-            if(name == "")
+            if (name == "")
             {
                 MessageBox.Show("请输入药名");
                 return;
@@ -39,7 +39,7 @@ namespace 药店报账工具
                 MessageBox.Show("在转换数字的时候发生了问题。");
             }
         }
-        
+
         private void button2_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
@@ -52,11 +52,20 @@ namespace 药店报账工具
         /// <param name="e"></param>
         private void FreshZongjia(object sender, EventArgs e)
         {
-            if(textBox2.Text!="" && textBox3.Text != "")
+            try
             {
-                double danjia = Convert.ToDouble(textBox2.Text);
-                double shuliang = Convert.ToDouble(textBox3.Text);
-                textBox4.Text = (danjia * shuliang).ToString(); 
+                if (textBox2.Text != "" && textBox3.Text != "")
+                {
+                    double danjia = Convert.ToDouble(textBox2.Text);
+                    double shuliang = Convert.ToDouble(textBox3.Text);
+                    textBox4.Text = (danjia * shuliang).ToString();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("请输入正确的数字格式");
+                textBox2.Text = "";
+                textBox3.Text = "";
             }
         }
     }

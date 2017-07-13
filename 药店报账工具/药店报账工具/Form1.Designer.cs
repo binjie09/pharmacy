@@ -252,7 +252,7 @@
             // 
             // textRemark
             // 
-            this.textRemark.Location = new System.Drawing.Point(116, 320);
+            this.textRemark.Location = new System.Drawing.Point(116, 458);
             this.textRemark.Name = "textRemark";
             this.textRemark.Size = new System.Drawing.Size(121, 21);
             this.textRemark.TabIndex = 19;
@@ -261,7 +261,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(48, 325);
+            this.label11.Location = new System.Drawing.Point(48, 463);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(41, 12);
             this.label11.TabIndex = 20;
@@ -307,7 +307,7 @@
             // lableGuanlifei
             // 
             this.lableGuanlifei.AutoSize = true;
-            this.lableGuanlifei.Location = new System.Drawing.Point(48, 401);
+            this.lableGuanlifei.Location = new System.Drawing.Point(57, 313);
             this.lableGuanlifei.Name = "lableGuanlifei";
             this.lableGuanlifei.Size = new System.Drawing.Size(53, 12);
             this.lableGuanlifei.TabIndex = 24;
@@ -316,7 +316,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(48, 442);
+            this.label15.Location = new System.Drawing.Point(57, 354);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(53, 12);
             this.label15.TabIndex = 25;
@@ -325,7 +325,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(48, 483);
+            this.label16.Location = new System.Drawing.Point(57, 395);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(53, 12);
             this.label16.TabIndex = 26;
@@ -333,7 +333,7 @@
             // 
             // textGuanli
             // 
-            this.textGuanli.Location = new System.Drawing.Point(107, 398);
+            this.textGuanli.Location = new System.Drawing.Point(116, 310);
             this.textGuanli.Name = "textGuanli";
             this.textGuanli.Size = new System.Drawing.Size(121, 21);
             this.textGuanli.TabIndex = 27;
@@ -341,7 +341,7 @@
             // 
             // textBaozhuang
             // 
-            this.textBaozhuang.Location = new System.Drawing.Point(107, 439);
+            this.textBaozhuang.Location = new System.Drawing.Point(116, 351);
             this.textBaozhuang.Name = "textBaozhuang";
             this.textBaozhuang.Size = new System.Drawing.Size(121, 21);
             this.textBaozhuang.TabIndex = 28;
@@ -349,7 +349,7 @@
             // 
             // textDaijian
             // 
-            this.textDaijian.Location = new System.Drawing.Point(107, 480);
+            this.textDaijian.Location = new System.Drawing.Point(116, 392);
             this.textDaijian.Name = "textDaijian";
             this.textDaijian.Size = new System.Drawing.Size(121, 21);
             this.textDaijian.TabIndex = 29;

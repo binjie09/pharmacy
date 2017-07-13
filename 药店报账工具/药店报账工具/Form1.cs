@@ -37,9 +37,9 @@ namespace 药店报账工具
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-
             BindCombobox();
             FreshPrise();
+            ReadFile("d:\\sav.dat");
         }
 
         private void 添加医生信息ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -84,8 +84,10 @@ namespace 药店报账工具
             catch (FormatException)
             {
                 MessageBox.Show("请输入正确的数字格式");
+                shishoujine.Text = "";
+                yaojia.Text = "";
             }
-            ReadFile("d:\\sav.dat");
+           
         }
        /// <summary>
        /// 将最后一次输入的代煎费 管理费、包装费等保存在dat文件里 下次打开自动读取 这是读取文件
