@@ -128,7 +128,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(334, 194);
+            this.button1.Location = new System.Drawing.Point(334, 91);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(79, 23);
@@ -139,10 +139,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(634, 198);
+            this.button2.Location = new System.Drawing.Point(636, 91);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(56, 18);
+            this.button2.Size = new System.Drawing.Size(79, 23);
             this.button2.TabIndex = 10;
             this.button2.Text = "修改";
             this.button2.UseVisualStyleBackColor = true;
@@ -160,7 +160,7 @@
             // 
             // textDeleteName
             // 
-            this.textDeleteName.Location = new System.Drawing.Point(376, 27);
+            this.textDeleteName.Location = new System.Drawing.Point(377, 32);
             this.textDeleteName.Margin = new System.Windows.Forms.Padding(2);
             this.textDeleteName.Name = "textDeleteName";
             this.textDeleteName.Size = new System.Drawing.Size(90, 21);
@@ -178,7 +178,7 @@
             // 
             // textUpdateName
             // 
-            this.textUpdateName.Location = new System.Drawing.Point(678, 28);
+            this.textUpdateName.Location = new System.Drawing.Point(679, 32);
             this.textUpdateName.Margin = new System.Windows.Forms.Padding(2);
             this.textUpdateName.Name = "textUpdateName";
             this.textUpdateName.Size = new System.Drawing.Size(76, 21);

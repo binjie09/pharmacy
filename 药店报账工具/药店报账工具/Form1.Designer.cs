@@ -31,15 +31,15 @@
             this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.添加医生信息ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.中成药ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.茶方ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBoxDoctor = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.fees = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.yaojia = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.total = new System.Windows.Forms.TextBox();
@@ -47,14 +47,11 @@
             this.shishoujine = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.zhaoling = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.textRemark = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label12 = new System.Windows.Forms.Label();
-            this.中成药ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.茶方ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lableGuanlifei = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -85,6 +82,20 @@
             this.添加医生信息ToolStripMenuItem.Text = "添加医生信息";
             this.添加医生信息ToolStripMenuItem.Click += new System.EventHandler(this.添加医生信息ToolStripMenuItem_Click);
             // 
+            // 中成药ToolStripMenuItem1
+            // 
+            this.中成药ToolStripMenuItem1.Name = "中成药ToolStripMenuItem1";
+            this.中成药ToolStripMenuItem1.Size = new System.Drawing.Size(56, 21);
+            this.中成药ToolStripMenuItem1.Text = "中成药";
+            this.中成药ToolStripMenuItem1.Click += new System.EventHandler(this.中成药ToolStripMenuItem1_Click);
+            // 
+            // 茶方ToolStripMenuItem
+            // 
+            this.茶方ToolStripMenuItem.Name = "茶方ToolStripMenuItem";
+            this.茶方ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
+            this.茶方ToolStripMenuItem.Text = "茶方";
+            this.茶方ToolStripMenuItem.Click += new System.EventHandler(this.茶方ToolStripMenuItem_Click);
+            // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Location = new System.Drawing.Point(531, 500);
@@ -107,7 +118,7 @@
             this.comboBoxDoctor.Items.AddRange(new object[] {
             "王医生",
             "赵医生"});
-            this.comboBoxDoctor.Location = new System.Drawing.Point(116, 86);
+            this.comboBoxDoctor.Location = new System.Drawing.Point(128, 59);
             this.comboBoxDoctor.Name = "comboBoxDoctor";
             this.comboBoxDoctor.Size = new System.Drawing.Size(121, 20);
             this.comboBoxDoctor.TabIndex = 3;
@@ -116,7 +127,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(48, 89);
+            this.label2.Location = new System.Drawing.Point(57, 62);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 12);
             this.label2.TabIndex = 4;
@@ -124,26 +135,17 @@
             // 
             // fees
             // 
-            this.fees.Location = new System.Drawing.Point(374, 85);
+            this.fees.Location = new System.Drawing.Point(386, 59);
             this.fees.Name = "fees";
             this.fees.ReadOnly = true;
             this.fees.Size = new System.Drawing.Size(121, 21);
             this.fees.TabIndex = 5;
             this.fees.Text = "1.0";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(501, 88);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(17, 12);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "元";
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(48, 148);
+            this.label4.Location = new System.Drawing.Point(57, 130);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 12);
             this.label4.TabIndex = 7;
@@ -151,26 +153,17 @@
             // 
             // yaojia
             // 
-            this.yaojia.Location = new System.Drawing.Point(116, 143);
+            this.yaojia.Location = new System.Drawing.Point(128, 127);
             this.yaojia.Name = "yaojia";
             this.yaojia.Size = new System.Drawing.Size(121, 21);
             this.yaojia.TabIndex = 8;
             this.yaojia.Text = "1.0";
             this.yaojia.TextChanged += new System.EventHandler(this.输入总药价时);
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(243, 148);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(17, 12);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "元";
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(315, 89);
+            this.label6.Location = new System.Drawing.Point(319, 62);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(41, 12);
             this.label6.TabIndex = 10;
@@ -180,7 +173,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(48, 204);
+            this.label7.Location = new System.Drawing.Point(57, 354);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(65, 12);
             this.label7.TabIndex = 11;
@@ -188,7 +181,7 @@
             // 
             // total
             // 
-            this.total.Location = new System.Drawing.Point(116, 201);
+            this.total.Location = new System.Drawing.Point(128, 354);
             this.total.Name = "total";
             this.total.ReadOnly = true;
             this.total.Size = new System.Drawing.Size(121, 21);
@@ -198,7 +191,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(48, 263);
+            this.label8.Location = new System.Drawing.Point(315, 354);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(65, 12);
             this.label8.TabIndex = 13;
@@ -206,7 +199,7 @@
             // 
             // shishoujine
             // 
-            this.shishoujine.Location = new System.Drawing.Point(116, 260);
+            this.shishoujine.Location = new System.Drawing.Point(386, 354);
             this.shishoujine.Name = "shishoujine";
             this.shishoujine.Size = new System.Drawing.Size(121, 21);
             this.shishoujine.TabIndex = 14;
@@ -216,7 +209,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(315, 263);
+            this.label9.Location = new System.Drawing.Point(319, 399);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(41, 12);
             this.label9.TabIndex = 15;
@@ -224,25 +217,16 @@
             // 
             // zhaoling
             // 
-            this.zhaoling.Location = new System.Drawing.Point(374, 260);
+            this.zhaoling.Location = new System.Drawing.Point(386, 396);
             this.zhaoling.Name = "zhaoling";
             this.zhaoling.ReadOnly = true;
             this.zhaoling.Size = new System.Drawing.Size(121, 21);
             this.zhaoling.TabIndex = 16;
             this.zhaoling.Text = "1.0";
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(501, 263);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(17, 12);
-            this.label10.TabIndex = 17;
-            this.label10.Text = "元";
-            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(531, 356);
+            this.button1.Location = new System.Drawing.Point(602, 360);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(107, 57);
             this.button1.TabIndex = 18;
@@ -252,7 +236,7 @@
             // 
             // textRemark
             // 
-            this.textRemark.Location = new System.Drawing.Point(116, 458);
+            this.textRemark.Location = new System.Drawing.Point(128, 455);
             this.textRemark.Name = "textRemark";
             this.textRemark.Size = new System.Drawing.Size(121, 21);
             this.textRemark.TabIndex = 19;
@@ -261,7 +245,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(48, 463);
+            this.label11.Location = new System.Drawing.Point(57, 459);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(41, 12);
             this.label11.TabIndex = 20;
@@ -275,7 +259,7 @@
             "支付宝",
             "微信付款",
             "银行卡"});
-            this.comboBox1.Location = new System.Drawing.Point(397, 148);
+            this.comboBox1.Location = new System.Drawing.Point(128, 261);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 20);
             this.comboBox1.TabIndex = 21;
@@ -284,30 +268,16 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(315, 152);
+            this.label12.Location = new System.Drawing.Point(57, 266);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(65, 12);
             this.label12.TabIndex = 22;
             this.label12.Text = "支付方式：";
             // 
-            // 中成药ToolStripMenuItem1
-            // 
-            this.中成药ToolStripMenuItem1.Name = "中成药ToolStripMenuItem1";
-            this.中成药ToolStripMenuItem1.Size = new System.Drawing.Size(56, 21);
-            this.中成药ToolStripMenuItem1.Text = "中成药";
-            this.中成药ToolStripMenuItem1.Click += new System.EventHandler(this.中成药ToolStripMenuItem1_Click);
-            // 
-            // 茶方ToolStripMenuItem
-            // 
-            this.茶方ToolStripMenuItem.Name = "茶方ToolStripMenuItem";
-            this.茶方ToolStripMenuItem.Size = new System.Drawing.Size(44, 21);
-            this.茶方ToolStripMenuItem.Text = "茶方";
-            this.茶方ToolStripMenuItem.Click += new System.EventHandler(this.茶方ToolStripMenuItem_Click);
-            // 
             // lableGuanlifei
             // 
             this.lableGuanlifei.AutoSize = true;
-            this.lableGuanlifei.Location = new System.Drawing.Point(57, 313);
+            this.lableGuanlifei.Location = new System.Drawing.Point(319, 130);
             this.lableGuanlifei.Name = "lableGuanlifei";
             this.lableGuanlifei.Size = new System.Drawing.Size(53, 12);
             this.lableGuanlifei.TabIndex = 24;
@@ -316,7 +286,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(57, 354);
+            this.label15.Location = new System.Drawing.Point(57, 198);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(53, 12);
             this.label15.TabIndex = 25;
@@ -325,7 +295,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(57, 395);
+            this.label16.Location = new System.Drawing.Point(315, 198);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(53, 12);
             this.label16.TabIndex = 26;
@@ -333,7 +303,7 @@
             // 
             // textGuanli
             // 
-            this.textGuanli.Location = new System.Drawing.Point(116, 310);
+            this.textGuanli.Location = new System.Drawing.Point(386, 127);
             this.textGuanli.Name = "textGuanli";
             this.textGuanli.Size = new System.Drawing.Size(121, 21);
             this.textGuanli.TabIndex = 27;
@@ -341,7 +311,7 @@
             // 
             // textBaozhuang
             // 
-            this.textBaozhuang.Location = new System.Drawing.Point(116, 351);
+            this.textBaozhuang.Location = new System.Drawing.Point(128, 195);
             this.textBaozhuang.Name = "textBaozhuang";
             this.textBaozhuang.Size = new System.Drawing.Size(121, 21);
             this.textBaozhuang.TabIndex = 28;
@@ -349,7 +319,7 @@
             // 
             // textDaijian
             // 
-            this.textDaijian.Location = new System.Drawing.Point(116, 392);
+            this.textDaijian.Location = new System.Drawing.Point(386, 195);
             this.textDaijian.Name = "textDaijian";
             this.textDaijian.Size = new System.Drawing.Size(121, 21);
             this.textDaijian.TabIndex = 29;
@@ -371,7 +341,6 @@
             this.Controls.Add(this.label11);
             this.Controls.Add(this.textRemark);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.label10);
             this.Controls.Add(this.zhaoling);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.shishoujine);
@@ -379,10 +348,8 @@
             this.Controls.Add(this.total);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.yaojia);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.fees);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBoxDoctor);
@@ -411,10 +378,8 @@
         private System.Windows.Forms.ComboBox comboBoxDoctor;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox fees;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox yaojia;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox total;
@@ -422,7 +387,6 @@
         private System.Windows.Forms.TextBox shishoujine;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox zhaoling;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textRemark;
         private System.Windows.Forms.Label label11;

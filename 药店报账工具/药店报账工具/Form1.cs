@@ -197,6 +197,7 @@ namespace 药店报账工具
             shishoujine.Text = "";
             zhaoling.Text = "";
             total.Text = "";
+            textRemark.Text = "";
         }
 
         private void 中成药ToolStripMenuItem1_Click(object sender, EventArgs e)
