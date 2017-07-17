@@ -308,6 +308,7 @@
             this.textGuanli.Size = new System.Drawing.Size(121, 21);
             this.textGuanli.TabIndex = 27;
             this.textGuanli.Text = "1";
+            this.textGuanli.TextChanged += new System.EventHandler(this.费用变化);
             // 
             // textBaozhuang
             // 
@@ -316,6 +317,7 @@
             this.textBaozhuang.Size = new System.Drawing.Size(121, 21);
             this.textBaozhuang.TabIndex = 28;
             this.textBaozhuang.Text = "1";
+            this.textBaozhuang.TextChanged += new System.EventHandler(this.费用变化);
             // 
             // textDaijian
             // 
@@ -324,6 +326,7 @@
             this.textDaijian.Size = new System.Drawing.Size(121, 21);
             this.textDaijian.TabIndex = 29;
             this.textDaijian.Text = "1";
+            this.textDaijian.TextChanged += new System.EventHandler(this.费用变化);
             // 
             // form1
             // 

@@ -39,7 +39,7 @@ namespace 药店报账工具
         {
             BindCombobox();
             FreshPrise();
-            ReadFile("d:\\sav.dat");
+            ReadFile(@".\sav.dat");
         }
 
         private void 添加医生信息ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -65,7 +65,20 @@ namespace 药店报账工具
         {
             try
             {
+                double guanli = 0,daijian = 0,baozhuang = 0;
                 double _fees = md.GetDoctorFeesByName(comboBoxDoctor.Text);
+                if(textGuanli.Text != "")
+                {
+                    guanli = Convert.ToDouble(textGuanli.Text);
+                }
+                if(textDaijian.Text != "")
+                {
+                    daijian = Convert.ToDouble(textDaijian.Text);
+                }
+                if(textBaozhuang.Text != "")
+                {
+                    baozhuang = Convert.ToDouble(textBaozhuang.Text);
+                }
                 if (comboBoxDoctor.Text != "")
                 {
                     fees.Text = _fees.ToString();
@@ -73,7 +86,7 @@ namespace 药店报账工具
                 double _total = 0;
                 if (yaojia.Text != "")
                 {
-                    _total = (Convert.ToDouble(yaojia.Text) + _fees);
+                    _total = (Convert.ToDouble(yaojia.Text) + _fees +guanli + daijian+baozhuang);
                     total.Text = _total.ToString();
                 }
                 if (shishoujine.Text != "")
@@ -95,6 +108,10 @@ namespace 药店报账工具
        /// <param name="path">文件路径</param>
         private void ReadFile(string path)
         {
+            if (!File.Exists(@"./sav.dat"))
+            {
+                return;
+            }
             FileStream fs = new FileStream(path, FileMode.Open);
             Byte[] bt = new Byte[8];
             fs.Read(bt, 0, 8);
@@ -186,7 +203,7 @@ namespace 药店报账工具
                 MessageBox.Show("请输入正确的数字格式");
                 return;
             }
-            SaveToFile("d:\\sav.dat");
+            SaveToFile(@"./sav.dat");
         }
         /// <summary>
         /// 初始化价格输入框
@@ -203,13 +220,31 @@ namespace 药店报账工具
         private void 中成药ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             Medi fm = new Medi();
+            
             fm.ShowDialog();
+            if(fm.DialogResult == DialogResult.OK)
+            {
+                DataRow rows = null;
+                rows = MyData.pharmacyDS.Tables["ChinesePatentMedicine"].Rows[MyData.pharmacyDS.Tables["ChinesePatentMedicine"].Rows.Count - 1];
+                ExcelHelper.x2003.PMAndTPTableToExcelForXLS(rows, @".\file.xls", "中成药");
+            } 
         }
 
         private void 茶方ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Tea ft = new Tea();
             ft.ShowDialog();
+            if (ft.DialogResult == DialogResult.OK)
+            {
+                DataRow rows = null;
+                rows = MyData.pharmacyDS.Tables["teaParty"].Rows[MyData.pharmacyDS.Tables["teaParty"].Rows.Count - 1];
+                ExcelHelper.x2003.PMAndTPTableToExcelForXLS(rows, @".\file.xls", "茶方");
+            }
+        }
+
+        private void 费用变化(object sender, EventArgs e)
+        {
+            FreshPrise();
         }
     }
 }

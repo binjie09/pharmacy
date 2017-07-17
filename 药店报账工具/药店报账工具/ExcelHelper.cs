@@ -105,7 +105,7 @@ namespace 药店报账工具
                             ICell cell = row.CreateCell(i);
                             cell.SetCellValue(MyData.pharmacyDS.Tables["ChinesePatentMedicine"].Columns[i].ColumnName);
                         }
-                        ICell cells = row.CreateCell(6);
+                        ICell cells = row.CreateCell(5);
                         cells.SetCellValue("月份");
                     }
                     FileStream fout = new FileStream(file, FileMode.Open, FileAccess.Write, FileShare.ReadWrite);
@@ -114,17 +114,17 @@ namespace 药店报账工具
                     IRow row1 = sheet.CreateRow(sheet.LastRowNum + 1);
                     ICell cell1 = row1.CreateCell(0);
                     cell1.SetCellValue(rows[0].ToString());
-                    for (int j = 1; j < 2; j++)
+                    for (int j = 1; j <= 2; j++)
                     {
                         ICell cell = row1.CreateCell(j);
                         cell.SetCellValue((double)rows[j]);
                     }
-                    for (int j = 2; j < 5; j++)
+                    for (int j = 3; j < 5; j++)
                     {
                         ICell cell = row1.CreateCell(j);
                         cell.SetCellValue(rows[j].ToString());
                     }
-                    ICell cellmon = row1.CreateCell(6);
+                    ICell cellmon = row1.CreateCell(5);
                     cellmon.SetCellValue(DateTime.Now.Year.ToString() + "年" + DateTime.Now.Month.ToString() + "月");
                     //cell.SetCellValue()
                     fout.Flush();
