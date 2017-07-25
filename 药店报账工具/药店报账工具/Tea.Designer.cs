@@ -88,7 +88,7 @@
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(132, 25);
             this.textBox3.TabIndex = 6;
-            this.textBox3.TextChanged += new System.EventHandler(this.FreshZongjia);
+            this.textBox3.TextChanged += new System.EventHandler(this.amout_changed);
             // 
             // textBox4
             // 
@@ -144,7 +144,6 @@
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(132, 25);
             this.textBox2.TabIndex = 5;
-            this.textBox2.TextChanged += new System.EventHandler(this.FreshZongjia);
             // 
             // Tea
             // 
