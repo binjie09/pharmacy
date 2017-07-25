@@ -13,10 +13,10 @@ namespace 药店报账工具
     /// <summary>
     /// 更新医生窗口
     /// </summary>
-    public partial class FormUpdateDoctor : Form
+    public partial class FormupdateDoctor : Form
     {
         public FormCreateDoctor form;
-        public FormUpdateDoctor()
+        public FormupdateDoctor()
         {
             InitializeComponent();
             
@@ -26,7 +26,7 @@ namespace 药店报账工具
         /// 不建议这样 建议这里要用DataRow就用构造函数传DataRow
         /// </summary>
         /// <param name="myForm"></param>
-        public FormUpdateDoctor(FormCreateDoctor myForm)
+        public FormupdateDoctor(FormCreateDoctor myForm)
         {
             InitializeComponent();
             this.form = myForm;

@@ -72,7 +72,7 @@ namespace 药店报账工具
                     fout.Close();
 
                 }
-                catch (Exception e)
+                catch (Exception )
                 {
                     MessageBox.Show("写入Excel错误！");
                 }
@@ -100,10 +100,10 @@ namespace 药店报账工具
                         sheet = workbook.CreateSheet(sheetname);
                         // 创建表头
                         row = sheet.CreateRow(0);//得到表头
-                        for (int i = 0; i < MyData.pharmacyDS.Tables["ChinesePatentMedicine"].Columns.Count; i++)
+                        for (int i = 0; i < MyData.pharmacyDS.Tables["ChinesePatentMedicineRT"].Columns.Count; i++)
                         {
                             ICell cell = row.CreateCell(i);
-                            cell.SetCellValue(MyData.pharmacyDS.Tables["ChinesePatentMedicine"].Columns[i].ColumnName);
+                            cell.SetCellValue(MyData.pharmacyDS.Tables["ChinesePatentMedicineRT"].Columns[i].ColumnName);
                         }
                         ICell cells = row.CreateCell(5);
                         cells.SetCellValue("月份");
@@ -133,7 +133,7 @@ namespace 药店报账工具
                     fout.Close();
 
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     MessageBox.Show("写入Excel错误！");
                 }

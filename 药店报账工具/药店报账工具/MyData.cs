@@ -40,7 +40,7 @@ namespace 药店报账工具
 
 
 
-            // 中成药表的建立：中成药的名字、数量、总价、备注
+            // 中成药交易记录表的建立：中成药的名字、数量、总价、日期、备注
             DataColumn patentMedicineNameColumn = new DataColumn("Name", typeof(string))
             {
                 Caption = "Medicne's name"
@@ -59,33 +59,40 @@ namespace 药店报账工具
                 Caption = "Medicine remark"
             };
 
-            DataTable patentMedicineTable = new DataTable("ChinesePatentMedicine");
+            DataTable patentMedicineTable = new DataTable("ChinesePatentMedicineRT");
             patentMedicineTable.Columns.AddRange(new DataColumn[] { patentMedicineNameColumn, patentMedicineAmountColumn,
                 patentMedicineTotalPriceColumn, patentMedicineDateTimeColumn, patentMedicineRemarkColumn });
 
+            // 茶方表的建立：茶方的名字、价格、备注
+            DataColumn teaPartyNameColumn = new DataColumn("Name", typeof(string));
+            DataColumn teaPartyPriceColumn = new DataColumn("Price", typeof(double));
+            DataColumn teaPartyRemarkColumn = new DataColumn("Remark", typeof(string));
 
-            // 茶方表的建立：茶方的名字、数量、总价、备注
-            DataColumn teaPartyNameColumn = new DataColumn("Name", typeof(string))
+            DataTable teaPartyTable = new DataTable("teaParty");
+            teaPartyTable.Columns.AddRange(new DataColumn[] { teaPartyNameColumn, teaPartyPriceColumn, teaPartyRemarkColumn });
+
+            // 茶方交易记录表的建立：茶方的名字、数量、总价、日期、备注
+            DataColumn teaPartyRTNameColumn = new DataColumn("Name", typeof(string))
             {
-                Caption = "Medicne's name"
+                Caption = "Tea's name"
             };
-            DataColumn teaPartyAmountColumn = new DataColumn("Amount", typeof(double))
+            DataColumn teaPartyRTAmountColumn = new DataColumn("Amount", typeof(double))
             {
                 Caption= "Tea's amount"
             };
-            DataColumn teaPartyTotalPriceColumn = new DataColumn("TotalPrice", typeof(double))
+            DataColumn teaPartyRTTotalPriceColumn = new DataColumn("TotalPrice", typeof(double))
             {
                 Caption = "Tea's total price"
             };
-            DataColumn teaPartyDateTimeColumn = new DataColumn("DateTime", typeof(DateTime));
-            DataColumn teaPartyRemarkColumn = new DataColumn("Remark", typeof(string))
+            DataColumn teaPartyRTDateTimeColumn = new DataColumn("DateTime", typeof(DateTime));
+            DataColumn teaPartyRTRemarkColumn = new DataColumn("Remark", typeof(string))
             {
                 Caption = "Tea's remark"
             };
 
-            DataTable teaPartyTable = new DataTable("teaParty");
-            teaPartyTable.Columns.AddRange(new DataColumn[] { teaPartyNameColumn, teaPartyAmountColumn,
-                teaPartyTotalPriceColumn, teaPartyDateTimeColumn, teaPartyRemarkColumn });
+            DataTable teaPartyRTTable = new DataTable("teaPartyRT");
+            teaPartyRTTable.Columns.AddRange(new DataColumn[] { teaPartyRTNameColumn, teaPartyRTAmountColumn,
+                teaPartyRTTotalPriceColumn, teaPartyRTDateTimeColumn, teaPartyRTRemarkColumn });
 
 
             // 交易记录表的建立：交易的所有者、药价、诊费、管理费、包装费、代煎费、实收金额、时间、支付方式
@@ -121,6 +128,7 @@ namespace 药店报账工具
             pharmacyDS.Tables.Add(doctorTable);
             pharmacyDS.Tables.Add(patentMedicineTable);
             pharmacyDS.Tables.Add(teaPartyTable);
+            pharmacyDS.Tables.Add(teaPartyRTTable);
             pharmacyDS.Tables.Add(transactionRecordTable);
             Load("open");
         }
@@ -151,7 +159,7 @@ namespace 药店报账工具
         /// <returns></returns>        
         public static DateTime InsertToPatentMedicine(string name, double amount, double price, string remark = "")
         {
-            DataRow patentMedicineRow = pharmacyDS.Tables["ChinesePatentMedicine"].NewRow();
+            DataRow patentMedicineRow = pharmacyDS.Tables["ChinesePatentMedicineRT"].NewRow();
             DateTime retDT = DateTime.Now;
 
             patentMedicineRow["Name"] = name;
@@ -160,31 +168,42 @@ namespace 药店报账工具
             patentMedicineRow["DateTime"] = retDT;
             patentMedicineRow["Remark"] = remark;
 
-            pharmacyDS.Tables["ChinesePatentMedicine"].Rows.Add(patentMedicineRow);
+            pharmacyDS.Tables["ChinesePatentMedicineRT"].Rows.Add(patentMedicineRow);
 
             return retDT;
            
         }
+        public static void InsertToTeaParty(string name, double price, string remark)
+        {
+            DataRow teapartyRow = pharmacyDS.Tables["teaParty"].NewRow();
+
+            teapartyRow["Name"] = name;
+            teapartyRow["Price"] = price;
+            teapartyRow["Remark"] = remark;
+
+            pharmacyDS.Tables["teaParty"].Rows.Add(teapartyRow);
+        }
+
         /// <summary>
-        /// /// 将信息插入到TeaParty 中
+        /// /// 将信息插入到茶方交易记录表中
         /// </summary>
-        /// <param name="name">中成药名</param>
+        /// <param name="name">茶方</param>
         /// <param name="amount"></param>
         /// <param name="price"></param>
         /// <param name="remark"></param>
         /// <returns></returns>
-        public static DateTime InsertToTeaParty(string name, double amount, double price, string remark ="")
+        public static DateTime InsertToteaPartyRT(string name, double amount, double price, string remark ="")
         {
-            DataRow teaPartyRow = pharmacyDS.Tables["teaParty"].NewRow();
+            DataRow teaPartyRTRow = pharmacyDS.Tables["teaPartyRT"].NewRow();
             DateTime retDT = DateTime.Now;
 
-            teaPartyRow["Name"] = name;
-            teaPartyRow["Amount"] = amount;
-            teaPartyRow["TotalPrice"] = price;
-            teaPartyRow["DateTime"] = retDT;
-            teaPartyRow["Remark"] = remark;
+            teaPartyRTRow["Name"] = name;
+            teaPartyRTRow["Amount"] = amount;
+            teaPartyRTRow["TotalPrice"] = price;
+            teaPartyRTRow["DateTime"] = retDT;
+            teaPartyRTRow["Remark"] = remark;
 
-            pharmacyDS.Tables["teaParty"].Rows.Add(teaPartyRow);
+            pharmacyDS.Tables["teaPartyRT"].Rows.Add(teaPartyRTRow);
 
             return retDT;
         }
@@ -234,6 +253,19 @@ namespace 药店报账工具
         {
             DataTable dt = Ds.Tables["Doctor"];
               DataRow[] drArr = dt.Select("Name='"+ name + "'");
+            DataRow dw = null;
+            if (drArr.Length != 0)
+            {
+                dw = (DataRow)drArr.GetValue(0);
+                return (double)dw[1];
+            }
+            else
+                return 0;
+        }
+        public static double GetTeaPriceByName(string name)
+        {
+            DataTable dt = pharmacyDS.Tables["teaParty"];
+            DataRow[] drArr = dt.Select("Name='" + name + "'");
             DataRow dw = null;
             if (drArr.Length != 0)
             {

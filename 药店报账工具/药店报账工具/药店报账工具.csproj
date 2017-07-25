@@ -101,6 +101,12 @@
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormManageTeaParty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormManageTeaParty.Designer.cs">
+      <DependentUpon>FormManageTeaParty.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormCreateDoctor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +118,12 @@
     </Compile>
     <Compile Include="FormUpdateDoctor.Designer.cs">
       <DependentUpon>FormUpdateDoctor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormUpdateTea.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormUpdateTea.Designer.cs">
+      <DependentUpon>FormUpdateTea.cs</DependentUpon>
     </Compile>
     <Compile Include="Medi.cs">
       <SubType>Form</SubType>
@@ -135,11 +147,17 @@
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormManageTeaParty.resx">
+      <DependentUpon>FormManageTeaParty.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormCreateDoctor.resx">
       <DependentUpon>FormCreateDoctor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormUpdateDoctor.resx">
       <DependentUpon>FormUpdateDoctor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormUpdateTea.resx">
+      <DependentUpon>FormUpdateTea.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Medi.resx">
       <DependentUpon>Medi.cs</DependentUpon>

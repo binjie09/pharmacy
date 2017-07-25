@@ -94,7 +94,7 @@ namespace 药店报账工具
             }
             else
             {
-                FormUpdateDoctor form1 = new FormUpdateDoctor()
+                FormupdateDoctor form1 = new FormupdateDoctor()
                 {
                     Owner = this
                 };

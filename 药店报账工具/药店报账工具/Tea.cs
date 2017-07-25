@@ -17,27 +17,11 @@ namespace 药店报账工具
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void BindCombobox()
         {
-            string name = textBox1.Text;
-            if (name == "")
-            {
-                MessageBox.Show("请输入药名");
-                return;
-            }
-            try
-            {
-                double danjia = Convert.ToDouble(textBox2.Text);
-                double shuliang = Convert.ToDouble(textBox3.Text);
-                double zongjia = shuliang * danjia;
-                MyData.InsertToTeaParty(name, shuliang, danjia, "");
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-            }
-            catch
-            {
-                MessageBox.Show("在转换数字的时候发生了问题。");
-            }
+            comboBox1.DataSource = MyData.pharmacyDS.Tables["teaParty"];
+            comboBox1.DisplayMember = "Name";
+            comboBox1.ValueMember = "Name";
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -61,6 +45,37 @@ namespace 药店报账工具
             {
                 MessageBox.Show("请输入正确的数字格式");
             }
+        }
+
+        private void Tea_Load(object sender, EventArgs e)
+        {
+            BindCombobox();
+            FreshPrise();
+        }
+
+        private void FreshPrise()
+        {
+            double price = MyData.GetTeaPriceByName(comboBox1.Text);
+            try
+            {
+
+
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("请输入正确的数字格式");
+            }
+
+        }
+
+        private void 选择茶方(object sender, EventArgs e)
+        {
+            FreshPrise();
+        }
+
+        private void button_queren_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

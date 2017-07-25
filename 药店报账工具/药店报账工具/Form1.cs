@@ -96,7 +96,7 @@ namespace 药店报账工具
             }
             catch (FormatException)
             {
-                MessageBox.Show("请输入正确的数字格式");
+
                 shishoujine.Text = "";
                 yaojia.Text = "";
             }
@@ -225,7 +225,7 @@ namespace 药店报账工具
             if(fm.DialogResult == DialogResult.OK)
             {
                 DataRow rows = null;
-                rows = MyData.pharmacyDS.Tables["ChinesePatentMedicine"].Rows[MyData.pharmacyDS.Tables["ChinesePatentMedicine"].Rows.Count - 1];
+                rows = MyData.pharmacyDS.Tables["ChinesePatentMedicineRT"].Rows[MyData.pharmacyDS.Tables["ChinesePatentMedicineRT"].Rows.Count - 1];
                 ExcelHelper.x2003.PMAndTPTableToExcelForXLS(rows, @".\file.xls", "中成药");
             } 
         }
@@ -237,7 +237,7 @@ namespace 药店报账工具
             if (ft.DialogResult == DialogResult.OK)
             {
                 DataRow rows = null;
-                rows = MyData.pharmacyDS.Tables["teaParty"].Rows[MyData.pharmacyDS.Tables["teaParty"].Rows.Count - 1];
+                rows = MyData.pharmacyDS.Tables["teaPartyRT"].Rows[MyData.pharmacyDS.Tables["teaPartyRT"].Rows.Count - 1];
                 ExcelHelper.x2003.PMAndTPTableToExcelForXLS(rows, @".\file.xls", "茶方");
             }
         }
@@ -245,6 +245,12 @@ namespace 药店报账工具
         private void 费用变化(object sender, EventArgs e)
         {
             FreshPrise();
+        }
+
+        private void 添加茶方ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormManageteaParty f = new FormManageteaParty();
+            f.ShowDialog();
         }
     }
 }
