@@ -61,6 +61,7 @@ namespace 药店报账工具
 
             MyData.InsertToDoctor(_name, _fee, _remark);
             MyData.pharmacyDS.Tables["Doctor"].AcceptChanges();
+            MyData.Save("insert Doctor");
         }
 
         private void ButtonDelete_Click(object sender, EventArgs e)

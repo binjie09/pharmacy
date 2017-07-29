@@ -59,6 +59,7 @@ namespace 药店报账工具
             }
             MyData.InsertToTeaParty(_name, _fee, _remark);
             MyData.pharmacyDS.Tables["teaParty"].AcceptChanges();
+            MyData.Save("insert Doctor");
         }
 
         private void button_change_Click(object sender, EventArgs e)
