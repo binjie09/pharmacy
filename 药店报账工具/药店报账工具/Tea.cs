@@ -66,7 +66,8 @@ namespace 药店报账工具
                 double price = Convert.ToDouble(textBox2.Text);
                 double amount = Convert.ToDouble(textBox3.Text);
                 double total = Convert.ToDouble(textBox4.Text);
-                MyData.InsertToteaPartyRT(name, amount, price, "");
+                string payWay = comboBox2.Text;
+                MyData.InsertToteaPartyToTR(name, price, total, payWay, "");
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }

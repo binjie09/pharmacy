@@ -1,6 +1,6 @@
 ﻿namespace 药店报账工具
 {
-    partial class FormCreateDoctor
+    partial class FormManageDoctor
     {
         /// <summary>
         /// Required designer variable.

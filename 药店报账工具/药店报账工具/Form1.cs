@@ -44,7 +44,7 @@ namespace 药店报账工具
 
         private void 添加医生信息ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormCreateDoctor f = new FormCreateDoctor();
+            FormManageDoctor f = new FormManageDoctor();
             f.ShowDialog();
             FreshPrise();
         }
@@ -225,8 +225,8 @@ namespace 药店报账工具
             if(fm.DialogResult == DialogResult.OK)
             {
                 DataRow rows = null;
-                rows = MyData.pharmacyDS.Tables["ChinesePatentMedicineRT"].Rows[MyData.pharmacyDS.Tables["ChinesePatentMedicineRT"].Rows.Count - 1];
-                ExcelHelper.x2003.PMAndTPTableToExcelForXLS(rows, @".\file.xls", "中成药");
+                rows = MyData.pharmacyDS.Tables["TransactionRecord"].Rows[MyData.pharmacyDS.Tables["TransactionRecord"].Rows.Count - 1];
+                ExcelHelper.x2003.TRTableToExcelForXLS(rows, @".\file.xls");
             } 
         }
 
@@ -237,8 +237,8 @@ namespace 药店报账工具
             if (ft.DialogResult == DialogResult.OK)
             {
                 DataRow rows = null;
-                rows = MyData.pharmacyDS.Tables["teaPartyRT"].Rows[MyData.pharmacyDS.Tables["teaPartyRT"].Rows.Count - 1];
-                ExcelHelper.x2003.PMAndTPTableToExcelForXLS(rows, @".\file.xls", "茶方");
+                rows = MyData.pharmacyDS.Tables["TransactionRecord"].Rows[MyData.pharmacyDS.Tables["TransactionRecord"].Rows.Count - 1];
+                ExcelHelper.x2003.TRTableToExcelForXLS(rows, @".\file.xls");
             }
         }
 

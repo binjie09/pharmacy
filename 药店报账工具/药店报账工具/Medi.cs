@@ -30,7 +30,8 @@ namespace 药店报账工具
                 double danjia = Convert.ToDouble(textBox2.Text);
                 double shuliang = Convert.ToDouble(textBox3.Text);
                 double zongjia = shuliang * danjia;
-                MyData.InsertToPatentMedicine(name, shuliang, danjia, "");
+                string payWay = comboBox1.Text;
+                MyData.InsertPatentMedicineToTR(name, danjia, zongjia,payWay , "");
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }

@@ -16,7 +16,7 @@ namespace 药店报账工具
     public partial class Form2 : Form
     {
         
-        private string text1;
+        private string doctor;
         private double v1;
         private double v2;
         private double v3;
@@ -31,10 +31,10 @@ namespace 药店报账工具
         }
 
 
-        public Form2(string text1, double v1,double fees, double v2, double v3, double v4, double v5, string v6, string text2)
+        public Form2(string doctor, double v1,double fees, double v2, double v3, double v4, double v5, string v6, string text2)
         {
             InitializeComponent();
-            this.text1 = text1;
+            this.doctor = doctor;
             this.v1 = v1;
             this.v2 = v2;
             this.v3 = v3;
@@ -48,7 +48,7 @@ namespace 药店报账工具
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            label1.Text += text1;
+            label1.Text += doctor;
             label2.Text += v1.ToString();
             label3.Text += v2.ToString();
             label4.Text += v3.ToString();
@@ -64,21 +64,19 @@ namespace 药店报账工具
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            DateTime Guid = MyData.InsertToTransactionRecord(text1, v1, fees, v2, v3, v4, v5, v6, text2);
+            MyData.InsertDcotorToTR(doctor, v1, fees, v2, v3, v4, v5, v6, text2);
             MyData.Save("normal");
             //MyData.pharmacyDS.Tables["Counter"].Rows[0];
             DataRow rows = null;
-            if (MyData.pharmacyDS.Tables["TransactionRecord"].Rows[MyData.pharmacyDS.Tables["TransactionRecord"].Rows.Count-1][8].ToString().Equals(Guid.ToString()))
-            {
+            //if (MyData.pharmacyDS.Tables["TransactionRecord"].Rows[MyData.pharmacyDS.Tables["TransactionRecord"].Rows.Count-1][8].ToString().Equals(Guid.ToString()))
+            //{
                 rows = MyData.pharmacyDS.Tables["TransactionRecord"].Rows[MyData.pharmacyDS.Tables["TransactionRecord"].Rows.Count-1];
-            }
+            //}
             
             ExcelHelper.x2003.TRTableToExcelForXLS(rows, @".\file.xls");
 
-
             this.DialogResult = DialogResult.OK;
             this.Close();
-
         }
 
         private void button1_Click(object sender, EventArgs e)

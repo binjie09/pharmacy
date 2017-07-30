@@ -38,6 +38,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -54,7 +56,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(112, 134);
+            this.label2.Location = new System.Drawing.Point(112, 101);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 15);
@@ -64,7 +66,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(112, 210);
+            this.label3.Location = new System.Drawing.Point(112, 163);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(52, 15);
@@ -74,7 +76,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(112, 286);
+            this.label4.Location = new System.Drawing.Point(112, 287);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(52, 15);
@@ -83,7 +85,7 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(170, 206);
+            this.textBox3.Location = new System.Drawing.Point(199, 161);
             this.textBox3.Margin = new System.Windows.Forms.Padding(4);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(132, 25);
@@ -92,7 +94,7 @@
             // 
             // textBox4
             // 
-            this.textBox4.Location = new System.Drawing.Point(170, 283);
+            this.textBox4.Location = new System.Drawing.Point(199, 285);
             this.textBox4.Margin = new System.Windows.Forms.Padding(4);
             this.textBox4.Name = "textBox4";
             this.textBox4.ReadOnly = true;
@@ -138,18 +140,45 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(170, 130);
+            this.textBox2.Location = new System.Drawing.Point(199, 98);
             this.textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(132, 25);
             this.textBox2.TabIndex = 5;
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(112, 225);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(75, 15);
+            this.label12.TabIndex = 26;
+            this.label12.Text = "支付方式:";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "现金",
+            "支付宝",
+            "微信付款",
+            "银行卡"});
+            this.comboBox2.Location = new System.Drawing.Point(199, 224);
+            this.comboBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(132, 23);
+            this.comboBox2.TabIndex = 25;
+            this.comboBox2.Text = "现金";
+            // 
             // Tea
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(424, 458);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
@@ -181,5 +210,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ComboBox comboBox2;
     }
 }

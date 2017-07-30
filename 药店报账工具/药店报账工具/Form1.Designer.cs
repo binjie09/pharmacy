@@ -83,14 +83,14 @@
             // 
             this.添加医生信息ToolStripMenuItem.Name = "添加医生信息ToolStripMenuItem";
             this.添加医生信息ToolStripMenuItem.Size = new System.Drawing.Size(111, 24);
-            this.添加医生信息ToolStripMenuItem.Text = "添加医生信息";
+            this.添加医生信息ToolStripMenuItem.Text = "管理医生信息";
             this.添加医生信息ToolStripMenuItem.Click += new System.EventHandler(this.添加医生信息ToolStripMenuItem_Click);
             // 
             // 天剑茶方ToolStripMenuItem
             // 
             this.天剑茶方ToolStripMenuItem.Name = "天剑茶方ToolStripMenuItem";
             this.天剑茶方ToolStripMenuItem.Size = new System.Drawing.Size(81, 24);
-            this.天剑茶方ToolStripMenuItem.Text = "添加茶方";
+            this.天剑茶方ToolStripMenuItem.Text = "管理茶方";
             this.天剑茶方ToolStripMenuItem.Click += new System.EventHandler(this.添加茶方ToolStripMenuItem_Click);
             // 
             // 中成药ToolStripMenuItem1

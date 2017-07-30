@@ -15,7 +15,7 @@ namespace 药店报账工具
     /// </summary>
     public partial class FormupdateDoctor : Form
     {
-        public FormCreateDoctor form;
+        public FormManageDoctor form;
         public FormupdateDoctor()
         {
             InitializeComponent();
@@ -26,7 +26,7 @@ namespace 药店报账工具
         /// 不建议这样 建议这里要用DataRow就用构造函数传DataRow
         /// </summary>
         /// <param name="myForm"></param>
-        public FormupdateDoctor(FormCreateDoctor myForm)
+        public FormupdateDoctor(FormManageDoctor myForm)
         {
             InitializeComponent();
             this.form = myForm;
@@ -35,7 +35,7 @@ namespace 药店报账工具
 
         private void FormUpdateDoctor_Load(object sender, EventArgs e)
         {
-            this.form = (FormCreateDoctor)this.Owner;
+            this.form = (FormManageDoctor)this.Owner;
             UpdateName.Text = form.tempRow["Name"].ToString();
         }
 

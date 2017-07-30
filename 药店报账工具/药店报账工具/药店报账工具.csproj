@@ -107,11 +107,11 @@
     <Compile Include="FormManageTeaParty.Designer.cs">
       <DependentUpon>FormManageTeaParty.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormCreateDoctor.cs">
+    <Compile Include="FormManageDoctor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormCreateDoctor.Designer.cs">
-      <DependentUpon>FormCreateDoctor.cs</DependentUpon>
+    <Compile Include="FormManageDoctor.Designer.cs">
+      <DependentUpon>FormManageDoctor.cs</DependentUpon>
     </Compile>
     <Compile Include="FormUpdateDoctor.cs">
       <SubType>Form</SubType>
@@ -150,8 +150,8 @@
     <EmbeddedResource Include="FormManageTeaParty.resx">
       <DependentUpon>FormManageTeaParty.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormCreateDoctor.resx">
-      <DependentUpon>FormCreateDoctor.cs</DependentUpon>
+    <EmbeddedResource Include="FormManageDoctor.resx">
+      <DependentUpon>FormManageDoctor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormUpdateDoctor.resx">
       <DependentUpon>FormUpdateDoctor.cs</DependentUpon>

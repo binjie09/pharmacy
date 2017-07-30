@@ -44,28 +44,29 @@ namespace 药店报账工具
                             ICell cell = row.CreateCell(i);
                             cell.SetCellValue(MyData.pharmacyDS.Tables["TransactionRecord"].Columns[i].ColumnName);
                         }
-                        ICell cells = row.CreateCell(10);
-                        cells.SetCellValue("月份");
+                        
                     }
                     FileStream fout = new FileStream(file, FileMode.Open, FileAccess.Write, FileShare.ReadWrite);
                     //row = sheet.CreateRow((sheet.LastRowNum + 1));//在工作表中添加一行
                     // 在最后一行插入数据
                     IRow row1 = sheet.CreateRow(sheet.LastRowNum + 1);
-                    ICell cell1 = row1.CreateCell(0);
-                    cell1.SetCellValue(rows[0].ToString());
-                    for (int j = 1; j < 7; j++)
+
+                    for(int i = 0; i < 3; i++)
                     {
-                        ICell cell = row1.CreateCell(j);
-                        cell.SetCellValue((double)rows[j]);
+                        ICell cell1 = row1.CreateCell(i);
+                        cell1.SetCellValue(rows[i].ToString());
                     }
-                    for (int j = 7; j < 10; j++)
+                    
+                    for (int i = 3; i < 9; i++)
                     {
-                        ICell cell = row1.CreateCell(j);
-                        cell.SetCellValue(rows[j].ToString());
+                        ICell cell = row1.CreateCell(i);
+                        cell.SetCellValue((double)rows[i]);
                     }
-                    ICell cellmon = row1.CreateCell(10);
-                    cellmon.SetCellValue(DateTime.Now.Year.ToString() + "年" + DateTime.Now.Month.ToString() + "月");
-                    //cell.SetCellValue()
+                    for (int i = 10; i < 12; i++)
+                    {
+                        ICell cell = row1.CreateCell(i);
+                        cell.SetCellValue(rows[i].ToString());
+                    }
                     fout.Flush();
                     workbook.Write(fout);//写入文件
                     workbook = null;
@@ -84,7 +85,7 @@ namespace 药店报账工具
             /// <param name="rows"></param>
             /// <param name="file"></param>
             /// <param name="typeTB">只有 Medicne 和 Tea 两种选择</param>
-            public static void PMAndTPTableToExcelForXLS(DataRow rows, string file, string typeTB)
+            /*public static void PMAndTPTableToExcelForXLS(DataRow rows, string file, string typeTB)
             {
                 string sheetname = typeTB;
                 try
@@ -139,6 +140,7 @@ namespace 药店报账工具
                 }
 
             }
+            */
 
 
         }
