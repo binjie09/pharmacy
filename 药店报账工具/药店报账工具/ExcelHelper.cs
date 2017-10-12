@@ -24,6 +24,7 @@ namespace 药店报账工具
             /// <param name="month"></param>
             public static void TableToExcelForXLS(DataRow rows, string file, string month)
             {
+                month = "total";
                 try
                 {
                     FileStream fs = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.ReadWrite); //读取流
@@ -42,6 +43,8 @@ namespace 药店报账工具
                             ICell cell = row.CreateCell(i);
                             cell.SetCellValue(MyData.pharmacyDS.Tables["TransactionRecord"].Columns[i].ColumnName);
                         }
+                        ICell cells = row.CreateCell(10);
+                        cells.SetCellValue("月份");
                     }
                     FileStream fout = new FileStream(file, FileMode.Open, FileAccess.Write, FileShare.ReadWrite);
                     //row = sheet.CreateRow((sheet.LastRowNum + 1));//在工作表中添加一行
@@ -59,7 +62,9 @@ namespace 药店报账工具
                         ICell cell = row1.CreateCell(j);
                         cell.SetCellValue(rows[j].ToString());
                     }
-
+                    ICell cellmon = row1.CreateCell(10);
+                    cellmon.SetCellValue(DateTime.Now.Year.ToString() + "年" + DateTime.Now.Month.ToString() + "月");
+                    //cell.SetCellValue()
                     fout.Flush();
                     workbook.Write(fout);//写入文件
                     workbook = null;

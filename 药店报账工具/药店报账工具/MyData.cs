@@ -8,14 +8,14 @@ namespace 药店报账工具
     {
         public static DataSet pharmacyDS = new DataSet("pharmacy"); //存储
         String path = null; //存储路径
-
+        
         public DataSet Ds { get => pharmacyDS; set => pharmacyDS = value; }
         public string Path { get => path; set => path = value; }
-
+        
         public MyData()
         { //构造函数
           // 药店的 DataSet 有几个不同的表：医生、中成药、茶方  
-
+            
             // 和医生表的建立：医生的姓名、诊费、备注
             DataColumn doctorNameColumn = new DataColumn("Name", typeof(string))
             {
@@ -32,6 +32,12 @@ namespace 药店报账工具
 
             DataTable doctorTable = new DataTable("Doctor");
             doctorTable.Columns.AddRange(new DataColumn[] { doctorNameColumn, doctorFreeColumn, doctorRemarkColumn });
+
+
+
+
+
+
 
 
             // 中成药表的建立：中成药的数量、总价、备注

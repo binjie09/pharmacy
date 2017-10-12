@@ -155,7 +155,6 @@ namespace 药店报账工具
                 MessageBox.Show("请输入正确的数字格式");
                 return;
             }
-
         }
         /// <summary>
         /// 初始化价格输入框

@@ -48,10 +48,13 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(28, 281);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(781, 338);
             this.dataGridView1.TabIndex = 0;
@@ -126,7 +129,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(334, 194);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(79, 23);
             this.button1.TabIndex = 9;
@@ -137,7 +140,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(634, 198);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(56, 18);
             this.button2.TabIndex = 10;
@@ -158,7 +161,7 @@
             // textDeleteName
             // 
             this.textDeleteName.Location = new System.Drawing.Point(376, 27);
-            this.textDeleteName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textDeleteName.Margin = new System.Windows.Forms.Padding(2);
             this.textDeleteName.Name = "textDeleteName";
             this.textDeleteName.Size = new System.Drawing.Size(90, 21);
             this.textDeleteName.TabIndex = 13;
@@ -176,7 +179,7 @@
             // textUpdateName
             // 
             this.textUpdateName.Location = new System.Drawing.Point(678, 28);
-            this.textUpdateName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textUpdateName.Margin = new System.Windows.Forms.Padding(2);
             this.textUpdateName.Name = "textUpdateName";
             this.textUpdateName.Size = new System.Drawing.Size(76, 21);
             this.textUpdateName.TabIndex = 15;

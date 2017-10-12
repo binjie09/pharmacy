@@ -66,17 +66,12 @@ namespace 药店报账工具
         {
             DateTime Guid = MyData.InsertToTransactionRecord(text1, v1, fees, v2, v3, v4, v5, v6, text2);
             MyData.Save("normal");
-
-            //DataRow[] rows = MyData.pharmacyDS.Tables["TransactionRecord"].Select("DateTime = ");
+            //MyData.pharmacyDS.Tables["Counter"].Rows[0];
             DataRow rows = null;
-            for (int curRow = 0; curRow < MyData.pharmacyDS.Tables["TransactionRecord"].Rows.Count; curRow++)
+            if (MyData.pharmacyDS.Tables["TransactionRecord"].Rows[MyData.pharmacyDS.Tables["TransactionRecord"].Rows.Count-1][8].ToString().Equals(Guid.ToString()))
             {
-                if (MyData.pharmacyDS.Tables["TransactionRecord"].Rows[curRow][8].ToString().Equals(Guid.ToString()))
-                {
-                    rows = MyData.pharmacyDS.Tables["TransactionRecord"].Rows[curRow];
-                }
+                rows = MyData.pharmacyDS.Tables["TransactionRecord"].Rows[MyData.pharmacyDS.Tables["TransactionRecord"].Rows.Count-1];
             }
-
             string month = "" + Guid.Year + "年" + Guid.Month + "月";
             ExcelHelper.x2003.TableToExcelForXLS(rows, @".\file.xls", month);
 
